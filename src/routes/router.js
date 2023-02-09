@@ -7,6 +7,8 @@ import Blogpost from "../pages/BlogPost/Blogpost";
 import Category from "../pages/category/Category";
 import ContactUs from "../pages/contact/ContactUs";
 import Home from "../pages/home/Home";
+import Login from "../pages/login/Login";
+import Register from "../pages/register/Register";
 const router = createBrowserRouter([
    {
     path : '/', element : <MainLayout/>, children : [
@@ -37,7 +39,15 @@ const router = createBrowserRouter([
         {
             path : '/contact',
             element : <ContactUs/>
-        }
+        },
+        {
+            path : '/login',
+            element : <Login/>
+        },
+        {
+            path : '/register',
+            element : <Register/>
+        },
        
     ]
    }

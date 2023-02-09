@@ -4,6 +4,7 @@ import Footer from '../shearedcomp/Footer/Footer';
 import Navbar from '../shearedcomp/Navbar/Navbar';
 
 const MainLayout = () => {
+    
     return (
         <div>
             <Navbar/>
