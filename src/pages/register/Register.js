@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useContext } from "react";
+import { mycontext } from "../../contextApi/AuthContext";
 
 const Register = () => {
   const neviget = useNavigate()
+  const {setLoading} = useContext(mycontext)
   const {
     register,
     handleSubmit,
@@ -13,6 +16,7 @@ const Register = () => {
   const [registerError, setregisterError] = useState("");
 
   const handleRegister = (data) => {
+    setLoading(true)
     const name = data.name;
     const email = data.email;
     const password = data.password;

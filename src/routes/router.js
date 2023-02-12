@@ -9,6 +9,7 @@ import ContactUs from "../pages/contact/ContactUs";
 import Home from "../pages/home/Home";
 import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
+import PrivetRouting from "./PrivetRouting";
 const router = createBrowserRouter([
    {
     path : '/', element : <MainLayout/>, children : [
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
         },
         {
             path : '/author',
-            element : <Author/>
+            element : <PrivetRouting> <Author/> </PrivetRouting>
         },
         {
             path : '/contact',

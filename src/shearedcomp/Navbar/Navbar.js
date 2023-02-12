@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { mycontext } from "../../contextApi/AuthContext";
 import "./navbar.css";
 const Navbar = () => {
   const [hidden, setHidden] = useState(false);
+  const {user,logout} = useContext(mycontext)
   const location = useLocation();
 
   const updateHidden = () => {
@@ -18,6 +21,11 @@ useEffect(() => {
   updateHidden();
 }, [location.pathname])
 
+
+const handlelogout = () =>{
+  console.log("log out");
+  logout()
+}
 
   return (
     <div className="navbar_wrapping"> 
@@ -43,12 +51,21 @@ useEffect(() => {
             <li>
               <Link to="/aboutus">About Us</Link>
             </li>
-            <li>
+            {
+              user?.email ?
+              <>
+              <li><button onClick={handlelogout}> Logout </button></li>
+              </>
+              :
+              <>
+               <li>
               <Link to="/login">Login</Link>
             </li>
             <li>
               <Link to="/register">Register</Link>
             </li>
+              </>
+            }
           </ul>
         </nav>
       )}

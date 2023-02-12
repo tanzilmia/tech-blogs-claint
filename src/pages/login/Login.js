@@ -1,33 +1,42 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { mycontext } from "../../contextApi/AuthContext";
 import "./Login.css";
 const Login = () => {
-  const neviget = useNavigate()
+  const { setisLogedind, setLoading } = useContext(mycontext);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const [loginError, setLoginError] = useState("");
 
+  const [loginError, setLoginError] = useState("");
+  const neviget = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
   const handlLogin = (data) => {
+    setLoading(true);
     const email = data.email;
     const password = data.password;
-    
+
     const userinfo = {
       email,
-      password
-    }
-    axios.post(`http://localhost:5000/authentication/login`,userinfo)
-    .then(res =>{
-      if(res.data.message === "Login Successful"){
-        const token = res.data.data;
-        localStorage.setItem("accessToken", token)
-      }
-    })
-    .catch(error => console.log(error))
+      password,
+    };
+    axios
+      .post(`http://localhost:5000/authentication/login`, userinfo)
+      .then((res) => {
+        if (res.data.message === "Login Successful") {
+          const token = res.data.data;
+          localStorage.setItem("accessToken", token);
+          neviget(from, { replace: true });
+          setisLogedind(true);
+        }
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -85,7 +94,12 @@ const Login = () => {
             {loginError && <p className="text-red-600">{loginError}</p>}
           </div>
         </form>
-        <p className="my-1">New To Tanzil's Blog ? <Link to = '/register' className="font-bold text-blue-400">Register Now</Link> </p>
+        <p className="my-1">
+          New To Tanzil's Blog ?{" "}
+          <Link to="/register" className="font-bold text-blue-400">
+            Register Now
+          </Link>{" "}
+        </p>
       </div>
     </div>
   );
