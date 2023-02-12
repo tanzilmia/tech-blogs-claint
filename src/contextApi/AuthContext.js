@@ -5,7 +5,7 @@ const AuthContext = ({children }) => {
     
     const [user, setuser] = useState(null)
     const [islogin, setisLogedind] = useState(false)
-    const [Loading, setLoading] = useState(false)
+    const [Loading, setLoading] = useState(true) 
 
     const token = localStorage.getItem("accessToken")
     console.log(token)

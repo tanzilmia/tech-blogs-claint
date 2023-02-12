@@ -1,0 +1,8 @@
+.sidenav_wrapping{
+    border-right: 2px solid rgb(236, 241, 246);
+    background: #410455;
+    color: #fff;
+}
+.sidenav_wrapping ul li{
+    padding: 5px 20px;
+}

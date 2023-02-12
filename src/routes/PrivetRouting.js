@@ -5,14 +5,16 @@ import { mycontext } from '../contextApi/AuthContext';
 
 const PrivetRouting = ({children}) => {
     const {user,Loading} = useContext(mycontext)
-    const location = useLocation()
+    const location = useLocation();
     if(Loading){
-        return <p>Loadding...</p>
+          console.log("loadding state")
+         return <h2>Loadding...</h2>
     }
-    if(user){
-        return children
+    if (user){
+        return children;
     }
-    return <Navigate to = '/login' state={{from:location}} replace></Navigate>
+
+    return <Navigate to="/login" state={{from: location}} replace></Navigate>;
 };
 
 export default PrivetRouting;

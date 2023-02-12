@@ -1,0 +1,13 @@
+.ul_menu li {
+    margin: 10px;
+    color: #76be87;
+}
+.top_navbar{
+    box-sizing: border-box;
+    box-shadow: 2px 2px 2px 2px #f6d9db;
+    background: #410455;
+}
+.content{
+    background: #F5F5F5;
+    padding: 10px 20px;
+}
