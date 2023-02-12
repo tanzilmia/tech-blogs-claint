@@ -1,8 +1,10 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 const Login = () => {
+  const neviget = useNavigate()
   const {
     register,
     handleSubmit,
@@ -10,7 +12,23 @@ const Login = () => {
   } = useForm();
   const [loginError, setLoginError] = useState("");
 
-  const handlLogin = (data) => {};
+  const handlLogin = (data) => {
+    const email = data.email;
+    const password = data.password;
+    
+    const userinfo = {
+      email,
+      password
+    }
+    axios.post(`http://localhost:5000/authentication/login`,userinfo)
+    .then(res =>{
+      if(res.data.message === "Login Successful"){
+        const token = res.data.data;
+        localStorage.setItem("accessToken", token)
+      }
+    })
+    .catch(error => console.log(error))
+  };
 
   return (
     <div className="w-full h-[100vh] login_page flex items-center justify-center text-white">

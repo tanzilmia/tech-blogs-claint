@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Register = () => {
+  const neviget = useNavigate()
   const {
     register,
     handleSubmit,
@@ -10,7 +12,30 @@ const Register = () => {
   } = useForm();
   const [registerError, setregisterError] = useState("");
 
-  const handleRegister = (data) => {};
+  const handleRegister = (data) => {
+    const name = data.name;
+    const email = data.email;
+    const password = data.password;
+    
+    const userinfos = {
+      name,
+      email,
+      password
+    }
+
+    axios.post(`http://localhost:5000/authentication`,userinfos)
+    .then(res =>{
+      if(res.data.message === "Register SuccessFull"){
+        neviget("/login")
+      }
+    })
+    .catch(error => console.log(error))
+
+
+
+    
+
+  };
 
   return (
     <div className="w-full h-[100vh] login_page flex items-center justify-center text-white">
