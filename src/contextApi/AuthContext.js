@@ -44,7 +44,8 @@ const AuthContext = ({children }) => {
         user,
         setLoading,
         Loading,
-        logout
+        logout,
+        setuser
     }
     return (
         <mycontext.Provider value={contextValue}> {children} </mycontext.Provider>

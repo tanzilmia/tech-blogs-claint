@@ -1,6 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
+import AllUser from "../Dashboard/Admin/AllUser";
+import ManagePost from "../Dashboard/Admin/ManagePost";
 import DefaultPage from "../Dashboard/AuthorDashboard/DefaultPage";
+import AllPost from "../Dashboard/commonPages/AllPost";
+import CreatePost from "../Dashboard/commonPages/CreatePost";
 import DashboardLayout from "../Dashboard/DashboardLayout";
+import MyProfile from "../Dashboard/MyProfile";
 import MainLayout from "../layout/MainLayout";
 import Aboutus from "../pages/Aboutus/Aboutus";
 import AdminRoutes from "../pages/AdminRoutes/AdminRoutes";
@@ -79,6 +84,51 @@ const router = createBrowserRouter([
               </AdminRoutes>
             ),
           },
+          {
+            path: "/dashboard/profile",
+            element: (
+              <AdminRoutes>
+                {" "}
+                <MyProfile/>{" "}
+              </AdminRoutes>
+            ),
+          },
+          {
+            path: "/dashboard/create-post",
+            element: (
+              <AdminRoutes>
+                {" "}
+                <CreatePost/>{" "}
+              </AdminRoutes>
+            ),
+          },
+          {
+            path: "/dashboard/all-post",
+            element: (
+              <AdminRoutes>
+                {" "}
+                <AllPost/>{" "}
+              </AdminRoutes>
+            ),
+          },
+          {
+            path: "/dashboard/all-user",
+            element: (
+              <AdminRoutes>
+                {" "}
+                <AllUser/>{" "}
+              </AdminRoutes>
+            ),
+          },
+          {
+            path: "/dashboard/manage-post",
+            element: (
+              <AdminRoutes>
+                {" "}
+                <ManagePost/>{" "}
+              </AdminRoutes>
+            ),
+          },
         ],
       },
       // author routing
@@ -97,6 +147,33 @@ const router = createBrowserRouter([
               <AuthorRouting>
                 {" "}
                 <DefaultPage/>{" "}
+              </AuthorRouting>
+            ),
+          },
+          {
+            path: "/authorPannel/profile",
+            element: (
+              <AuthorRouting>
+                {" "}
+                <MyProfile/>{" "}
+              </AuthorRouting>
+            ),
+          },
+          {
+            path: "/authorPannel/all-post",
+            element: (
+              <AuthorRouting>
+                {" "}
+                <AllPost/>{" "}
+              </AuthorRouting>
+            ),
+          },
+          {
+            path: "/authorPannel/create-post",
+            element: (
+              <AuthorRouting>
+                {" "}
+                <CreatePost/>{" "}
               </AuthorRouting>
             ),
           },

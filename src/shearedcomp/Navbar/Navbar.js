@@ -11,10 +11,12 @@ const Navbar = () => {
 
   const updateHidden = () => {
     switch (location.pathname) {
-      case "/login":
-      case "/register":
-      case "/dashboard":
-      case "/authorPannel":
+      
+      case "/":
+      case "/blog":
+      case "/category":
+      case "/author":
+      case "/aboutus":
         setHidden(true);
         break;
       default:
@@ -36,7 +38,7 @@ const handlelogout = () =>{
 
   return (
     <div className="navbar_wrapping"> 
-      {!hidden && (
+      {hidden && (
         <nav className="flex justify-between  navbar_main p-5">
           <h2 className="text-2xl text-white">Tanzil's Blogs</h2>
           <ul className="md:flex lg:flex navbar_menu">

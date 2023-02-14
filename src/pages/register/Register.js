@@ -20,12 +20,18 @@ const Register = () => {
     const name = data.name;
     const email = data.email;
     const password = data.password;
+    const porfilepic = "null";
+    const role = "null";
+
     
     const userinfos = {
       name,
       email,
-      password
+      password,
+      porfilepic,
+      role
     }
+    console.log(userinfos)
 
     axios.post(`http://localhost:5000/authentication`,userinfos)
     .then(res =>{

@@ -18,15 +18,15 @@ const SideNav = () => {
     return (
         <div className='sidenav_wrapping h-[100vh] py-5 w-full'>
             <ul>
-                <li> <Link className='flex items-center'> <span className='mr-5'><FaUserAlt/> </span>  My Profile</Link> </li>
+                <li> <Link to ={user.role === "admin" ? "/dashboard/profile" : "/authorPannel/profile"} className='flex items-center'> <span className='mr-5'><FaUserAlt/> </span>  My Profile</Link> </li>
                 {
                     user?.role === "admin" && <>
-                     <li> <Link className='flex items-center'> <span className='mr-5'><ImUsers/> </span> All Users</Link> </li>
-                     <li> <Link className='flex items-center'> <span className='mr-5'><FaExchangeAlt/> </span> Manege Post</Link> </li>
+                     <li> <Link to = "/dashboard/all-user" className='flex items-center'> <span className='mr-5'><ImUsers/> </span> All Users</Link> </li>
+                     <li> <Link to = "/dashboard/manage-post" className='flex items-center'> <span className='mr-5'><FaExchangeAlt/> </span> Manege Post</Link> </li>
                     </>
                 }
-                <li> <Link className='flex items-center'> <span className='mr-5'><IoIosCreate/> </span> Create Post</Link> </li>
-                <li> <Link className='flex items-center'> <span className='mr-5'><BsFiles/> </span> All Posts</Link> </li>
+                <li> <Link to ={user.role === "admin" ? "/dashboard/create-post" : "/authorPannel/create-post"}  className='flex items-center'> <span className='mr-5'><IoIosCreate/> </span> Create Post</Link> </li>
+                <li> <Link to ={user.role === "admin" ? "/dashboard/all-post" : "/authorPannel/all-post"}  className='flex items-center'> <span className='mr-5'><BsFiles/> </span> All Posts</Link> </li>
                 <li> <Link to = '/' className='flex items-center'> <span className='mr-5'><AiFillHome/> </span> Back To Home </Link></li>
                 
                 <li> <button onClick={handleLogout} className='flex items-center'> <span className='mr-5'> <HiOutlineLogout/> </span>  LogOut </button> </li> 
