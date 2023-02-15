@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import AllUser from "../Dashboard/Admin/AllUser";
 import ManagePost from "../Dashboard/Admin/ManagePost";
+import Setting from "../Dashboard/Admin/Setting";
 import DefaultPage from "../Dashboard/AuthorDashboard/DefaultPage";
 import AllPost from "../Dashboard/commonPages/AllPost";
 import CreatePost from "../Dashboard/commonPages/CreatePost";
@@ -126,6 +127,15 @@ const router = createBrowserRouter([
               <AdminRoutes>
                 {" "}
                 <ManagePost/>{" "}
+              </AdminRoutes>
+            ),
+          },
+          {
+            path: "/dashboard/setting",
+            element: (
+              <AdminRoutes>
+                {" "}
+                <Setting/>{" "}
               </AdminRoutes>
             ),
           },

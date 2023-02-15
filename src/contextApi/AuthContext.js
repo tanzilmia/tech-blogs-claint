@@ -10,6 +10,15 @@ const AuthContext = ({children }) => {
     const token = localStorage.getItem("accessToken")
     console.log(token)
 
+
+    const header = {
+      headers: {
+           'Content-Type': 'application/json',
+           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          
+           }
+    };
+
     useEffect(() => {
       if(token || islogin){
         axios.post(`http://localhost:5000/authentication/user-info`,{token})
@@ -45,7 +54,8 @@ const AuthContext = ({children }) => {
         setLoading,
         Loading,
         logout,
-        setuser
+        setuser,
+        header
     }
     return (
         <mycontext.Provider value={contextValue}> {children} </mycontext.Provider>

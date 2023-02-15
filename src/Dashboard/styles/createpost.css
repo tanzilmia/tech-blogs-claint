@@ -1,0 +1,12 @@
+.upload_div{
+    border: 2px dashed rgb(232, 224, 224);
+    padding: 5px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.upload_icon{
+    font-size: 55px;
+}
