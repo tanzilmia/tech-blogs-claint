@@ -54,7 +54,7 @@ const AllPost = () => {
               <Td className="py-2 px-4 border text-sm"> {mypost.title} </Td>
               <Td className="py-2 px-4 border text-sm"> {mypost.category} </Td>
               <Td className="py-2 px-4 border text-sm">
-                {mypost.article.split(" ").slice(0, 10).join(" ")}
+                {mypost.article.split(" ").slice(0, 10).join(" ")} ...
               </Td>
               <Td className="py-2 px-4 border text-sm">
                 {" "}
