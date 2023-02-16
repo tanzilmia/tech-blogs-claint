@@ -6,6 +6,7 @@ const AuthContext = ({children }) => {
     const [user, setuser] = useState(null)
     const [islogin, setisLogedind] = useState(false)
     const [Loading, setLoading] = useState(true) 
+    const [dynamicPath, setdynamicPath] = useState("")
 
     const token = localStorage.getItem("accessToken")
     console.log(token)
@@ -55,7 +56,9 @@ const AuthContext = ({children }) => {
         Loading,
         logout,
         setuser,
-        header
+        header,
+        setdynamicPath,
+        dynamicPath
     }
     return (
         <mycontext.Provider value={contextValue}> {children} </mycontext.Provider>

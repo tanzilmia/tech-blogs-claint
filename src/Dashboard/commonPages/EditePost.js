@@ -1,3 +1,4 @@
+import { useLoaderData, useNavigate } from "react-router-dom";
 import axios from "axios";
 import moment from "moment/moment";
 import React, { useEffect, useState } from "react";
@@ -5,26 +6,31 @@ import { useContext } from "react";
 import { useDropzone } from "react-dropzone";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { IoMdImages } from 'react-icons/io';
+import { IoMdImages } from "react-icons/io";
 import { mycontext } from "../../contextApi/AuthContext";
 import "../styles/createpost.css";
 
-const CreatePost = () => {
-  const { user,header } = useContext(mycontext);
+const EditePost = () => {
+  const { user, header } = useContext(mycontext);
   const [thumbnail, setThumbnail] = useState("");
   const [categories, setCategories] = useState([]);
-  const { name, email } = user;
+  const neviget = useNavigate()
   const imgkey = process.env.REACT_APP_IMAGE_SEC;
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset
   } = useForm();
 
-  const [loginError, setLoginError] = useState("");
+  const EditeData = useLoaderData();
+  console.log(EditeData);
 
+  const {
+    title : oldTititle,
+    article: oldArticle,
+    _id
+  } = EditeData?.posts
   const now = moment();
   const date = now.format("MM/DD/YY hh:mm a");
 
@@ -38,6 +44,7 @@ const CreatePost = () => {
   }, []);
 
   // select Upload Image
+
 
   const { getRootProps, getInputProps } = useDropzone({
     // Note how this callback is never invoked if drop occurs on the inner dropzone
@@ -57,6 +64,8 @@ const CreatePost = () => {
     },
   });
 
+ 
+
   // create post function
 
   const handleCreatepost = (data) => {
@@ -65,36 +74,32 @@ const CreatePost = () => {
     const category = data.category;
 
     // make post
-
-    const newPost = {
+    const Updatepost = {
       title,
       article,
       date,
       category,
-      email,
-      name,
       thumbnail,
-      like: 0,
-      featuresPost: false
+      _id
+
     };
 
-    console.log(newPost)
-    axios.post(`http://localhost:5000/author/create-post?email=${user?.email}`, newPost, header)
+    axios.put(`http://localhost:5000/author/edite-post?email=${user?.email}`, Updatepost, header)
     .then(res => {
-      console.log(res.data);
-
-      if(res.data.message === "Post created successfully"){
-        toast.success("Post Added")
-        reset()
+      if(res.data.message === "Update Complete"){
+        toast.success("Update Complete")
+        if(user.role === "admin"){
+            neviget("/dashboard/all-post")
+            console.log("working")
+        }
+        else{
+            neviget("/authorPannel/all-post")
+        }
+        
       }
-
-      if(res.data.message === "Post is Alrady Exist"){
-        toast.error("This post Is Alreay exist")
-      }
-
     })
     .catch((e)=> console.log(e))
-  
+
   };
 
   return (
@@ -106,14 +111,18 @@ const CreatePost = () => {
           <form onSubmit={handleSubmit(handleCreatepost)}>
             <div className="post_wrapping">
               <div {...getRootProps({ className: "uploadPhoto" })}>
-                <input {...getInputProps()}/>
-                 <div className="upload_div">UpLoad Photo  <span className="upload_icon"><IoMdImages/></span> </div>
+                <input {...getInputProps()} />
+                <div className="upload_div">
+                  UpLoad Photo{" "}
+                  <span className="upload_icon">
+                    <IoMdImages />
+                  </span>{" "}
+                </div>
               </div>
 
               <div className="form-control w-full">
                 <select
                   className="input input-bordered w-full py-2 px-4 my-2 rounded-lg"
-                  
                   {...register("category", {
                     required: "category is Required",
                   })}
@@ -132,7 +141,7 @@ const CreatePost = () => {
               </div>
               <div className="form-control w-full">
                 <input
-                  placeholder="Enter Title Here"
+                  defaultValue={oldTititle}
                   type="text"
                   {...register("title", {
                     required: "title is required",
@@ -146,7 +155,8 @@ const CreatePost = () => {
 
               <div className="form-control w-full">
                 <textarea
-                  placeholder="Write Article ..."
+                  
+                  defaultValue={oldArticle}
                   type="text"
                   {...register("article", {
                     required: "title is required",
@@ -158,6 +168,7 @@ const CreatePost = () => {
                 )}
               </div>
             </div>
+            
 
             {/* btn create */}
             <input
@@ -165,9 +176,7 @@ const CreatePost = () => {
               value="Create"
               type="submit"
             />
-            <div>
-              {loginError && <p className="text-red-600">{loginError}</p>}
-            </div>
+            
           </form>
         </div>
       </div>
@@ -175,4 +184,4 @@ const CreatePost = () => {
   );
 };
 
-export default CreatePost;
+export default EditePost;

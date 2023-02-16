@@ -66,13 +66,13 @@ const AllUser = () => {
               
               <Td className="py-2 px-4 border text-sm">
                 {" "}
-                <button className='btn btn-sm btn-success' onClick={() => handleAuthor(user._id)} disabled = {user.role === "admin"}>
-                  Make Author
+                <button className='btn btn-sm btn-success' onClick={() => handleAuthor(user._id)} disabled = {user.role === "admin" || user.role === "author"}>
+                Make Author
                 </button>{" "}
               </Td>
               <Td className="py-2 px-4 border text-sm">
                 {" "}
-                <button className='btn btn-sm btn-success' onClick={() => resetAuthor(user._id)} disabled = {user.role === "admin"}>
+                <button className='btn btn-sm btn-success' onClick={() => resetAuthor(user._id)} disabled = {user.role === "admin" || user.role === "null"}>
                   Delete Author
                 </button>{" "}
               </Td>

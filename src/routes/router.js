@@ -5,6 +5,7 @@ import Setting from "../Dashboard/Admin/Setting";
 import DefaultPage from "../Dashboard/AuthorDashboard/DefaultPage";
 import AllPost from "../Dashboard/commonPages/AllPost";
 import CreatePost from "../Dashboard/commonPages/CreatePost";
+import EditePost from "../Dashboard/commonPages/EditePost";
 import DashboardLayout from "../Dashboard/DashboardLayout";
 import MyProfile from "../Dashboard/MyProfile";
 import MainLayout from "../layout/MainLayout";
@@ -66,6 +67,8 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register />,
       },
+
+  
       // admin pannel routing
       {
         path: "/dashboard",
@@ -84,6 +87,12 @@ const router = createBrowserRouter([
                 <DefaultPage/>{" "}
               </AdminRoutes>
             ),
+          },
+
+          {
+            path: "/dashboard/edete-post/:id",
+            element: <AdminRoutes> <EditePost/> </AdminRoutes>,
+            loader: ({params})=> fetch(`http://localhost:5000/author/edite-post/${params.id}`)
           },
           {
             path: "/dashboard/profile",
@@ -159,6 +168,12 @@ const router = createBrowserRouter([
                 <DefaultPage/>{" "}
               </AuthorRouting>
             ),
+          },
+
+          {
+            path: "/authorPannel/edete-post/:id",
+            element: <AuthorRouting> <EditePost/> </AuthorRouting>,
+            loader: ({params})=> fetch(`http://localhost:5000/author/edite-post/${params.id}`)
           },
           {
             path: "/authorPannel/profile",

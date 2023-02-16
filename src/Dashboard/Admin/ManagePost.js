@@ -1,18 +1,20 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { Table, Tbody, Td, Th, Thead, Tr } from 'react-super-responsive-table';
+import { mycontext } from '../../contextApi/AuthContext';
 
 const ManagePost = () => {
-
+  const { user,header } = useContext(mycontext);
     const [allPost, setallPost] = useState([])
     useEffect(() => {
-      axios.get(`http://localhost:5000/admin/all-posts`)
+      axios.get(`http://localhost:5000/admin/all-posts?email=${user?.email}`,header)
       .then(res =>{
         setallPost(res.data); 
       })
       .catch((e)=> console.log(e))
-    }, [])
+    }, [user?.email,header])
     
   
    const handledelete = (id) =>{

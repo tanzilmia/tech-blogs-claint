@@ -5,11 +5,12 @@ import { mycontext } from "../../contextApi/AuthContext";
 import "./navbar.css";
 const Navbar = () => {
   const [hidden, setHidden] = useState(false);
-  const {user,logout} = useContext(mycontext)
+  const {user,logout,} = useContext(mycontext)
   const naviget = useNavigate()
   const location = useLocation();
 
   const updateHidden = () => {
+   
     switch (location.pathname) {
       
       case "/":
