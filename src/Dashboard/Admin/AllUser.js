@@ -18,11 +18,29 @@ const AllUser = () => {
       .catch((e)=> console.log(e))
     }, [user?.email,header])
     
-    const handleEdite = (id) =>{
-        console.log(id)
+    const handleAuthor = (id) =>{
+        axios.put(`http://localhost:5000/admin/make-autor?email=${user?.email}`, {id}, header)
+        .then(res =>{
+          setusers(res.data)
+          console.log(res.data);
+        })
+        .catch((e)=>console.log(e))
+    }
+    const resetAuthor = (id) =>{
+        axios.put(`http://localhost:5000/admin/make-user?email=${user?.email}`, {id}, header)
+        .then(res =>{
+          setusers(res.data)
+          console.log(res.data)
+        })
+        .catch((e)=>console.log(e))
     }
     const handledelete = (id) =>{
-        console.log(id)
+      axios.delete(`http://localhost:5000/admin/delete-user?id=${id}&&email=${user.email}`, header)
+      .then(res =>{
+        setusers(res.data)
+        console.log(res.data)
+      })
+      .catch((e)=>console.log(e))
     }
 
     return (
@@ -36,6 +54,7 @@ const AllUser = () => {
             <Th className="py-2 px-4 border">Roll</Th>
             <Th className="py-2 px-4 border">Action</Th>
             <Th className="py-2 px-4 border">Action</Th>
+            <Th className="py-2 px-4 border">Action</Th>
           </Tr>
         </Thead>
         <Tbody>
@@ -47,8 +66,14 @@ const AllUser = () => {
               
               <Td className="py-2 px-4 border text-sm">
                 {" "}
-                <button className='btn btn-sm btn-success' onClick={() => handleEdite(user._id)} disabled = {user.role === "admin"}>
+                <button className='btn btn-sm btn-success' onClick={() => handleAuthor(user._id)} disabled = {user.role === "admin"}>
                   Make Author
+                </button>{" "}
+              </Td>
+              <Td className="py-2 px-4 border text-sm">
+                {" "}
+                <button className='btn btn-sm btn-success' onClick={() => resetAuthor(user._id)} disabled = {user.role === "admin"}>
+                  Delete Author
                 </button>{" "}
               </Td>
               <Td className="py-2 px-4 border text-sm">
