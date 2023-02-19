@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import { BsFillPenFill } from 'react-icons/bs';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
+import { Link } from 'react-router-dom';
 import { Table, Tbody, Td, Th, Thead, Tr } from 'react-super-responsive-table';
 import { mycontext } from '../../contextApi/AuthContext';
 
@@ -54,7 +55,8 @@ const AllUser = () => {
             <Th className="py-2 px-4 border">Roll</Th>
             <Th className="py-2 px-4 border">Action</Th>
             <Th className="py-2 px-4 border">Action</Th>
-            <Th className="py-2 px-4 border">Action</Th>
+            <Th className="py-2 px-4 border">Delete</Th>
+            <Th className="py-2 px-4 border">Details</Th>
           </Tr>
         </Thead>
         <Tbody>
@@ -82,6 +84,12 @@ const AllUser = () => {
                   {" "}
                   <RiDeleteBin5Fill />{" "}
                 </button>{" "}
+              </Td>
+              <Td className="py-2 px-4 border text-sm">
+                {" "}
+                <Link to = {`/dashboard/all-user/author-post/${user._id}`} className='btn btn-sm btn-info' disabled = {user.role === "null" }>
+                  See Details
+                </Link>{" "}
               </Td>
             </Tr>
           ))}

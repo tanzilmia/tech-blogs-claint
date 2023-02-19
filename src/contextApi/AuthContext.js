@@ -45,7 +45,7 @@ const AuthContext = ({children }) => {
         localStorage.removeItem("accessToken")
         setLoading(false)
         setisLogedind(false)
-        window.location.reload()
+        
     }
 
    

@@ -7,6 +7,7 @@ import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import { BsFillPenFill } from "react-icons/bs";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 const AllPost = () => {
   const { user, header, setdynamicPath } = useContext(mycontext);
   const [myposts, setMyposts] = useState([]);
@@ -30,13 +31,14 @@ const AllPost = () => {
   const handledelete = (id) => {
     axios
       .delete(
-        `http://localhost:5000/admin/author/delete-post?email=${user?.email}`,
+        `http://localhost:5000/author/delete-post?email=${user?.email}&id=${id}`,
         header
       )
       .then((res) => {
         console.log(res.data);
         if (res.data.message === "success") {
           setMyposts(res.data.posts);
+          toast.success("delete Successfull")
         }
       })
       .catch((e) => console.log(e));

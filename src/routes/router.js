@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import AllUser from "../Dashboard/Admin/AllUser";
+import AuthorPost from "../Dashboard/Admin/AuthorPost";
 import ManagePost from "../Dashboard/Admin/ManagePost";
 import Setting from "../Dashboard/Admin/Setting";
 import DefaultPage from "../Dashboard/AuthorDashboard/DefaultPage";
@@ -147,6 +148,16 @@ const router = createBrowserRouter([
                 <Setting/>{" "}
               </AdminRoutes>
             ),
+          },
+          {
+            path: "/dashboard/all-user/author-post/:id",
+            element: (
+              <AdminRoutes>
+                {" "}
+                <AuthorPost/>{" "}
+              </AdminRoutes>
+            ),
+            loader : ({params})=> fetch(`http://localhost:5000/admin/user-posts/${params.id}`)
           },
         ],
       },
