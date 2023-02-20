@@ -1,4 +1,5 @@
 import axios from 'axios';
+import moment from 'moment';
 import React, { useState } from 'react';
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
@@ -10,6 +11,8 @@ import { mycontext } from '../../contextApi/AuthContext';
 const AuthorPost = () => {
     const {user,header} = useContext(mycontext)
     const Post = useLoaderData()
+    const now = moment();
+    const date = now.format("MM/DD/YY hh:mm a");
     const [myposts, setMyposts] = useState(Post.data);
     console.log(myposts);
 
@@ -31,7 +34,7 @@ const AuthorPost = () => {
       };
   
      const makeFeaturepost = (id) =>{
-        axios.put(`http://localhost:5000/admin/make-featured?email=${user?.email}`,{id},header )
+        axios.put(`http://localhost:5000/admin/make-featured?email=${user?.email}`,{id,date},header )
         .then(res =>{
           if (res.data.message === "success") {
             window.location.reload()
@@ -41,7 +44,7 @@ const AuthorPost = () => {
         .catch((e)=> console.log(e))
      }
      const makenormalPost = (id) =>{
-        axios.put(`http://localhost:5000/admin/make-normalpost?email=${user?.email}`,{id},header )
+        axios.put(`http://localhost:5000/admin/make-normalpost?email=${user?.email}`,{id,date},header )
         .then(res =>{
           if (res.data.message === "success") {
             window.location.reload()

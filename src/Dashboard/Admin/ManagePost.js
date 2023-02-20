@@ -1,4 +1,5 @@
 import axios from 'axios';
+import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
@@ -9,6 +10,8 @@ import { mycontext } from '../../contextApi/AuthContext';
 const ManagePost = () => {
   const { user,header } = useContext(mycontext);
     const [allPost, setallPost] = useState([])
+    const now = moment();
+    const date = now.format("MM/DD/YY hh:mm a");
     useEffect(() => {
       axios.get(`http://localhost:5000/admin/all-posts?email=${user?.email}`,header)
       .then(res =>{
@@ -36,7 +39,7 @@ const ManagePost = () => {
     };
 
    const makeFeaturepost = (id) =>{
-      axios.put(`http://localhost:5000/admin/make-featured?email=${user?.email}`,{id},header )
+      axios.put(`http://localhost:5000/admin/make-featured?email=${user?.email}`,{id,date},header )
       .then(res =>{
         if (res.data.message === "success") {
           setallPost(res.data.posts);
@@ -46,7 +49,7 @@ const ManagePost = () => {
       .catch((e)=> console.log(e))
    }
    const makenormalPost = (id) =>{
-      axios.put(`http://localhost:5000/admin/make-normalpost?email=${user?.email}`,{id},header )
+      axios.put(`http://localhost:5000/admin/make-normalpost?email=${user?.email}`,{id,date},header )
       .then(res =>{
         if (res.data.message === "success") {
           setallPost(res.data.posts);
@@ -66,6 +69,7 @@ const ManagePost = () => {
         <Table className="w-full border-collapse bg-white shadow-md">
         <Thead>
           <Tr className="bg-gray-200 text-gray-700">
+            <Th className="py-2 px-4 border text-xs">Serial</Th>
             <Th className="py-2 px-4 border text-xs">date</Th>
             <Th className="py-2 px-4 border text-xs">Title</Th>
             <Th className="py-2 px-4 border text-xs">category</Th>
@@ -77,8 +81,9 @@ const ManagePost = () => {
           </Tr>
         </Thead>
         <Tbody>
-          {allPost?.map((mypost) => (
+          {allPost?.map((mypost,index) => (
             <Tr key={mypost._id} className="bg-gray-100 hover:bg-slate-200 cursor-pointer text-gray-800">
+              <Td className="py-2 px-4 border text-sm"> {index + 1} </Td>
               <Td className="py-2 px-4 border text-sm"> {mypost.date} </Td>
               <Td className="py-2 px-4 border text-sm"> {mypost.title} </Td>
               <Td className="py-2 px-4 border text-sm"> {mypost.category} </Td>

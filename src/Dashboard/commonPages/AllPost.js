@@ -52,6 +52,7 @@ const AllPost = () => {
         <Table className="w-full border-collapse bg-white shadow-md">
           <Thead>
             <Tr className="bg-gray-200 text-gray-700">
+              <Th className="py-2 px-4 border">Serial</Th>
               <Th className="py-2 px-4 border">date</Th>
               <Th className="py-2 px-4 border">Title</Th>
               <Th className="py-2 px-4 border">category</Th>
@@ -61,8 +62,9 @@ const AllPost = () => {
             </Tr>
           </Thead>
           <Tbody>
-            {myposts?.map((mypost) => (
+            {myposts?.map((mypost,index) => (
               <Tr key={mypost._id} className="bg-gray-100 text-gray-800">
+                <Td className="py-2 px-4 border text-sm"> {index + 1} </Td>
                 <Td className="py-2 px-4 border text-sm"> {mypost.date} </Td>
                 <Td className="py-2 px-4 border text-sm"> {mypost.title} </Td>
                 <Td className="py-2 px-4 border text-sm">

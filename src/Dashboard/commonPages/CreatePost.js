@@ -13,7 +13,7 @@ const CreatePost = () => {
   const { user,header } = useContext(mycontext);
   const [thumbnail, setThumbnail] = useState("");
   const [categories, setCategories] = useState([]);
-  const { name, email } = user;
+  const { name, email,porfilepic } = user;
   const imgkey = process.env.REACT_APP_IMAGE_SEC;
 
   const {
@@ -75,7 +75,9 @@ const CreatePost = () => {
       name,
       thumbnail,
       like: 0,
-      featuresPost: false
+      featuresPost: false,
+      feturedTime:date,
+      authorPic:porfilepic
     };
 
     console.log(newPost)
