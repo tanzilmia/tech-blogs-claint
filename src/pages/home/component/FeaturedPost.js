@@ -11,7 +11,7 @@ const [featuresPost, setfeaturesPost] = useState({})
      })
     }, [])
 
-    const {name, email,title,article,category,thumbnail,date, _id } = featuresPost
+    const {name,title,article,thumbnail,date, _id } = featuresPost
     const truncatedArticle = article?.split(" ").slice(0, 70).join(" ")
 
     return (
@@ -20,9 +20,9 @@ const [featuresPost, setfeaturesPost] = useState({})
             <article className='py-3'>
                <div> <p> Post By__ <span className="text-blue-600 font-semibold">{name}</span>  <span> {date}</span></p></div>
                 <div className="post_info">
-                    <h2 className="title"> {title} </h2>
+                    <h2 className="title sm:text-[20px] text-[20px] md:text-[28px] lg:text-[28px] py-3"> {title} </h2>
                     <p> {truncatedArticle}  </p>
-                    <button className='btn btn-sm mt-2'> See More </button>
+                    <button className='common_btn'> See More </button>
                     
                 </div>
             </article>

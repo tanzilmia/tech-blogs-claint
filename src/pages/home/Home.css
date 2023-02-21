@@ -1,6 +1,7 @@
 .featured_post{
-  border: 1px solid rgb(250, 245, 245);
+  border: 1px solid #dddddf;
   padding: 25px;
+  
 }
 .featured_thumb{
   width: 100%;
@@ -8,7 +9,6 @@
   max-height: 400px;
 }
 .title{
-    font-size: 28px;
     text-transform: capitalize;
 }
 .content{
@@ -23,11 +23,44 @@
 }
 
 .side_title{
-  font-size: 18px;
-  line-height: 30px;
   color: #232536;
   text-transform: capitalize;
 }
 .author_info{
   font-size: 14px;
+}
+
+
+/* unique posts */
+
+.container{
+
+}
+.content_img img{
+  border-radius: 5px;
+}
+.content_article{
+ 
+}
+.article_title{
+  font-weight: 600;
+  color: #232536;
+}
+.article_text{
+
+}
+.category_name{
+font-size: 16px;
+line-height: 20px;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: #592EA9;
+font-weight: 600;
+}
+.common_btn{
+  background: #FFD050;
+  padding: 10px 28px;
+  color: #232536;
+  font-weight: 600;
+  margin: 10px 0;
 }
