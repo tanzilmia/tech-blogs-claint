@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../Home.css'
 
 const FeaturedPost = () => {
@@ -22,7 +23,7 @@ const [featuresPost, setfeaturesPost] = useState({})
                 <div className="post_info">
                     <h2 className="title sm:text-[20px] text-[20px] md:text-[28px] lg:text-[28px] py-3"> {title} </h2>
                     <p> {truncatedArticle}  </p>
-                    <button className='common_btn'> See More </button>
+                    <div className='my-5'><Link to = {`/blogpost/${_id}`} className='common_btn'> See More </Link></div>
                     
                 </div>
             </article>
