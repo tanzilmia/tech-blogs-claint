@@ -69,7 +69,7 @@ const Blogpost = () => {
           </div>
         </div>
         <h2 className="text-xl text-center md:text-2xl lg:text-2xl md:my-20 lg:my-20 sm:my-10 my-10">Related Posts</h2>
-        <div class="related_posts grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="related_posts grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
 
                 
 
@@ -79,13 +79,13 @@ const Blogpost = () => {
             RelatedPost.map((post)=><Link to = {`/blogpost/${post._id}`} key={post._id} class="content_cart bg-white rounded-lg shadow-lg overflow-hidden">
             <div class="img_div">
               <img
-                class="w-full h-[200px]"
+                class="w-full md:h-[200px] lg:h-[200px] h-[100px]"
                 src= {post.thumbnail}
                 alt=""
               />
             </div>
             <div class="content_post p-4">
-              <p class="author_info text-gray-600  mb-2 text-xs flex justify-between">
+              <p class="author_info text-gray-600  mb-2 text-xs md:flex lg:flex justify-between">
                 
                 <span> post by : {post.name} </span>  <span>{post.date}</span>
               </p>
@@ -93,7 +93,7 @@ const Blogpost = () => {
                 <h2 class="text-sm font-semibold mb-2">
                   {post.title}
                 </h2>
-                <p class="text-gray-500 text-sm">
+                <p class="text-gray-500 text-sm md:block lg:block hidden">
                 {post?.article?.split(" ").slice(0, 20).join(" ")}
                 </p>
               </div>

@@ -45,8 +45,9 @@ const router = createBrowserRouter([
         element: <Aboutus />,
       },
       {
-        path: "/category",
+        path: "/category-posts/:id",
         element: <Category />,
+        loader: ({params}) => fetch(`http://localhost:5000/category-posts-data/${params.id}`)
       },
       {
         path: "/author",

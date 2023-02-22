@@ -64,7 +64,7 @@ const Register = () => {
               {...register("name", {
                 required: "Name is required",
               })}
-              className="input input-bordered w-full py-2 px-4 my-2 rounded-lg"
+              className="input input-bordered w-full py-2 px-4 my-0 rounded-lg"
             />
             {errors.email && (
               <p className="text-red-600">{errors.email?.message}</p>
@@ -81,7 +81,7 @@ const Register = () => {
               {...register("email", {
                 required: "Email Address is required",
               })}
-              className="input input-bordered w-full py-2 px-4 my-2 rounded-lg"
+              className="input input-bordered w-full py-2 px-4 my-0 rounded-lg"
             />
             {errors.email && (
               <p className="text-red-600">{errors.email?.message}</p>
@@ -103,7 +103,7 @@ const Register = () => {
                   message: "Password must be 6 characters or longer",
                 },
               })}
-              className="input input-bordered w-full py-2 px-4 my-2 rounded-lg"
+              className="input input-bordered w-full py-2 px-4 my-0 rounded-lg"
             />
             <label className="label"> </label>
             {errors.password && (
@@ -111,7 +111,7 @@ const Register = () => {
             )}
           </div>
           <input
-            className=" bg-[#A5D9D0] hover:cursor-pointer hover:bg-[#11c7a8] text-white py-2 px-4 mt-5 font-bold text-xl w-full rounded-lg"
+            className=" bg-[#A5D9D0] hover:cursor-pointer hover:bg-[#11c7a8] text-white py-2 px-4 font-bold text-xl w-full rounded-lg"
             value="Register"
             type="submit"
           />

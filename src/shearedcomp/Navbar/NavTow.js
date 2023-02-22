@@ -1,18 +1,38 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { mycontext } from "../../contextApi/AuthContext";
 import { FiMenu, FiX } from "react-icons/fi";
+import axios from "axios";
 
 const NavTow = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logout } = useContext(mycontext);
+  const [ismenuOpen, setismenuOpen] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
   const navigate = useNavigate();
-
+  const [categorys, setcategorys] = useState([]);
   const handleLogout = () => {
     logout();
     navigate("/");
   };
 
+
+  
+  const handleClick = () => {
+    setIsClicked(true);
+  };
+  const toggleDropdown = () => {
+    setismenuOpen(!ismenuOpen);
+    setIsClicked(false);
+  };
+
+  useEffect(() => {
+    axios.get(`http://localhost:5000/admin/categories`)
+    .then(res =>{
+      setcategorys(res.data)
+    })
+    .catch((e)=> console.log(e.message))
+  }, [])
   return (
     <div className="bg-gray-900 text-white">
       <nav className="flex justify-between p-5">
@@ -51,22 +71,56 @@ const NavTow = () => {
               Blog
             </Link>
           </li>
-          <li className="block mt-4 md:inline-block md:mt-0 lg:inline-block lg:mt-0 mr-6">
-            <Link
-              to="/category"
-              className="text-gray-300 hover:text-white font-semibold tracking-tight"
-            >
-              Category
-            </Link>
-          </li>
-          <li className="block mt-4 md:inline-block md:mt-0 lg:inline-block lg:mt-0 mr-6">
-            <Link
-              to="/author"
-              className="text-gray-300 hover:text-white font-semibold tracking-tight"
-            >
-              Author
-            </Link>
-          </li>
+          
+          <li className="block mt-4 md:inline-block md:mt-0 lg:inline-block lg:mt-0 mr-6 relative">
+      <div>
+        <button
+          type="button"
+          className="text-gray-300 hover:text-white font-semibold tracking-tight flex items-center"
+          onClick={toggleDropdown}
+        >
+          All Category
+          <svg
+            className="h-5 w-5 ml-2"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              fillRule="evenodd"
+              d="M5.293 7.707a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </button>
+      </div>
+      {ismenuOpen && (
+        <ul className="absolute z-10 left-0 mt-2 w-32 bg-gray-800 rounded-md overflow-hidden shadow-lg">
+
+        {/* map all list */}
+
+
+        {categorys.length &&
+        categorys.map((category) => (
+          <React.Fragment key={category._id}>
+            {!isClicked && (
+              <li>
+                <Link
+                  to={`/category-posts/${category._id}`}
+                  onClick={handleClick}
+                  className="block px-4 py-2 text-sm text-gray-300 hover:bg-[#656363]"
+                >
+                  {category.category}
+                </Link>
+              </li>
+            )}
+          </React.Fragment>
+        ))}
+
+          
+        </ul>
+      )}
+    </li>
           {user?.role === "admin" && (
             <li className="block mt-4 md:inline-block md:mt-0 lg:inline-block lg:mt-0 mr-6">
               <Link
