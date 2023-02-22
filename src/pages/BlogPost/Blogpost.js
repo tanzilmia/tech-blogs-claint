@@ -65,10 +65,10 @@ const Blogpost = () => {
 
           <div className="md:w-8/12 lg:w-8/12 w-11/12 mx-auto">
             <img className="w-full" src={thumbnail} alt="" />
-            <p className="mb-3 text-[18px] font-[400] mt-10">{article}</p>
+            <p className="md:text-[18px] lg:text-[18px] sm:text-[15px] text-[14px] font-[400] mt-10">{article}</p>
           </div>
         </div>
-        <h2 className="text-xl text-center md:text-2xl lg:text-2xl my-20">Related Posts</h2>
+        <h2 className="text-xl text-center md:text-2xl lg:text-2xl md:my-20 lg:my-20 sm:my-10 my-10">Related Posts</h2>
         <div class="related_posts grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
 
                 

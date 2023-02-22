@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { BsFacebook } from 'react-icons/bs';
+import { AiFillTwitterCircle } from 'react-icons/ai';
+import { ImLinkedin } from 'react-icons/im';
+import { FaInstagramSquare } from 'react-icons/fa';
 
 const Footer = () => {
     const [hidden, setHidden] = useState(false);
@@ -21,34 +25,76 @@ const Footer = () => {
         <div className="footer_main"> 
       {!hidden && (
         <>
-         <footer className="bg-gray-800 py-10">
-  <div className="container mx-auto flex justify-between">
-    <div className="w-1/3">
-      <h3 className="text-lg font-bold text-gray-100 mb-4">About Us</h3>
-      <p className="text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam fermentum, erat id rhoncus bibendum, ex dolor faucibus libero, in laoreet purus orci sit amet leo.</p>
-    </div>
-    <div className="w-1/3">
-      <h3 className="text-lg font-bold text-gray-100 mb-4">Contact Us</h3>
-      <ul>
-        <li className="mb-2"><i className="fas fa-phone-alt text-gray-400 mr-2"></i>123-456-7890</li>
-        <li className="mb-2"><i className="fas fa-envelope text-gray-400 mr-2"></i>contact@example.com</li>
-        <li className="mb-2"><i className="fas fa-map-marker-alt text-gray-400 mr-2"></i>123 Main St, Anytown USA</li>
-      </ul>
-    </div>
-    <div className="w-1/3">
-      <h3 className="text-lg font-bold text-gray-100 mb-4">Follow Us</h3>
-      <div className="flex">
-        <a href="#" className="mr-4"><i className="fab fa-facebook-square text-gray-400 hover:text-gray-100"></i></a>
-        <a href="#" className="mr-4"><i className="fab fa-twitter-square text-gray-400 hover:text-gray-100"></i></a>
-        <a href="#" className="mr-4"><i className="fab fa-instagram-square text-gray-400 hover:text-gray-100"></i></a>
-        <a href="#" className="mr-4"><i className="fab fa-linkedin text-gray-400 hover:text-gray-100"></i></a>
+       <footer className="bg-gray-900 text-white mt-10 sticky bottom-0">
+      <div className="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+        <div className="md:flex md:items-center md:justify-between">
+          <div className="flex items-center justify-center md:justify-start">
+            <h2 className="text-3xl font-bold tracking-tight">Tanzil Blogs</h2>
+          </div>
+          <div className="mt-8 md:mt-0 md:flex md:items-center">
+            <ul className="flex flex-col md:flex-row md:gap-x-8">
+              <li className="text-lg">
+                <Link to="/" className="hover:text-gray-400">
+                  Home
+                </Link>
+              </li>
+              <li className="text-lg">
+                <Link to="/services" className="hover:text-gray-400">
+                  Services
+                </Link>
+              </li>
+              <li className="text-lg">
+                <Link to="/resources" className="hover:text-gray-400">
+                  Resources
+                </Link>
+              </li>
+              <li className="text-lg">
+                <Link to="/contact" className="hover:text-gray-400">
+                  Contact
+                </Link>
+              </li>
+              <li className="text-lg">
+                <Link to="/about" className="hover:text-gray-400">
+                  About
+                </Link>
+              </li>
+            </ul>
+            <div className="mt-8 md:mt-0 md:flex md:items-center md:ml-8">
+              <ul className="flex gap-x-4">
+                <li>
+                  <Link to="#">
+                    <BsFacebook size={24} className="text-white hover:text-gray-400" />
+                  </Link>
+                </li>
+                <li>
+                  <Link to="#">
+                    <AiFillTwitterCircle size={24} className="text-white hover:text-gray-400" />
+                  </Link>
+                </li>
+                <li>
+                  <Link to="#">
+                    <ImLinkedin size={24} className="text-white hover:text-gray-400" />
+                  </Link>
+                </li>
+                <li>
+                  <Link to="#">
+                    <FaInstagramSquare size={24} className="text-white hover:text-gray-400" />
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div className='w-8/12 mx-auto'>
+        <p className="mt-8 text-center text-[#cacaca96]">
+          Lörem ipsum od ohet dilogi. Bell trabel, samuligt, ohöbel utom diska. Jinesade bel när feras redorade i belogi.
+          FAR paratyp i muvåning, och pesask vyfisat. Viktiga poddradio har un mad och inde.
+        </p>
+        <br />
+        <p className='text-center'>Develop By - Tanzil </p>
+        </div>
       </div>
-    </div>
-  </div>
-  <div className="text-center mt-8">
-    <p className="text-gray-400">Copyright &copy; 2023 - All rights reserved</p>
-  </div>
-</footer>
+    </footer>
 
         </>
       )}
