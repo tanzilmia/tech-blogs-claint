@@ -3,8 +3,16 @@ import { Link, useLoaderData } from 'react-router-dom';
 import NavTow from '../../shearedcomp/Navbar/NavTow';
 import { FaUserCircle } from "react-icons/fa";
 import './Category.css'
+import { useContext } from 'react';
+import { mycontext } from '../../contextApi/AuthContext';
+import Loadding from '../../shearedcomp/Loadding/Loadding';
 const Category = () => {
+    const {Loading} = useContext(mycontext)
     const Posts = useLoaderData()
+
+  if(Loading){
+    return <Loadding/>
+  }
     return (
         <>
         <NavTow/>
@@ -19,7 +27,7 @@ const Category = () => {
         {/* post who will mapping */}
         {Posts?.length &&
           Posts?.map((post) => (
-            <Link to = {`/blogpost/${post._id}`} key ={post._id} className="container mb-3 content md:flex lg:flex">
+            <div key ={post._id} className="container mb-3 content md:flex lg:flex">
               <div className="content_img md:w-4/12 lg:w-4/12 lg:mr-5 md:mr-5">
                 <img src={post.thumbnail} alt="" />
               </div>
@@ -34,14 +42,14 @@ const Category = () => {
                     {post.date}
                   </div>
                 </div>
-                <h2 className="article_title sm:text-[20px] text-[20px] md:text-[30px] lg:text-[30px]">
+                <Link to = {`/blogpost/${post._id}`} className="article_title sm:text-[20px] text-[20px] md:text-[30px] lg:text-[30px]">
                   {post.title}
-                </h2>
+                </Link>
                 <p className="article_text mb-5">
                   {post?.article?.split(" ").slice(0, 35).join(" ")} ...
                 </p>
               </div>
-            </Link>
+            </div>
           ))}
       </div>
 

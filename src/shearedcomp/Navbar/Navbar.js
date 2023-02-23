@@ -29,7 +29,6 @@ const Navbar = () => {
       case "/blog":
       case "/category":
       case "/author":
-      case "/aboutus":
         setHidden(true);
         break;
       default:
@@ -43,7 +42,7 @@ const Navbar = () => {
   }, [location.pathname]);
 
   const handleLogout = () => {
-    console.log("log out");
+    
     logout();
     naviget("/");
   };
@@ -62,7 +61,7 @@ const Navbar = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/admin/categories`)
+      .get(`https://blog-server-tau.vercel.app/admin/categories`)
       .then((res) => {
         setcategorys(res.data);
       })
@@ -70,10 +69,12 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="bg-gray-900 text-white">
+    <div className="bg-gray-900 text-white md:sticky lg:sticky md:top-0 lg:top-0">
       {hidden && (
         <nav className="flex justify-between p-5">
-          <h2 className="text-2xl text-white">Tanzil's Blogs</h2>
+          <h2 className={`${
+              isOpen ? "hidden" : ""
+            } text-2xl`}>Tanzil's Blogs</h2>
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -194,15 +195,7 @@ const Navbar = () => {
                 </Link>
               </li>
             )}
-            <li className="block mt-4 md:inline-block md:mt-0">
-              <Link
-                to="/aboutus"
-                className="text-gray-300 hover:text-white font-semibold tracking-tight"
-              >
-                About Us
-              </Link>
-            </li>
-
+           
             <li className="hidden md:inline-block md:mt-0 lg:inline-block lg:mt-0 mr-1 ml-2">
               <form onSubmit={handlesearch} className="flex items-center ">
                 <input

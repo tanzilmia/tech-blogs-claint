@@ -2,13 +2,14 @@ import React from 'react';
 import { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { mycontext } from '../contextApi/AuthContext';
+import Loadding from '../shearedcomp/Loadding/Loadding';
 
 const PrivetRouting = ({children}) => {
     const {user,Loading} = useContext(mycontext)
     const location = useLocation();
     if(Loading){
-          console.log("loadding state")
-         return <h2>Loadding...</h2>
+          
+         return <Loadding/>
     }
     if (user){
         return children;

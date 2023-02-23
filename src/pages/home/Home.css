@@ -1,7 +1,5 @@
 .featured_post{
-  border: 1px solid #dddddf;
-  padding: 25px;
-  
+  border: 1px solid #e9e9eff4;
 }
 .featured_thumb{
   width: 100%;
@@ -33,22 +31,16 @@
 
 /* unique posts */
 
-.container{
 
-}
 .content_img img{
   border-radius: 5px;
 }
-.content_article{
- 
-}
+
 .article_title{
   font-weight: 600;
   color: #232536;
 }
-.article_text{
 
-}
 .category_name{
 font-size: 16px;
 line-height: 20px;

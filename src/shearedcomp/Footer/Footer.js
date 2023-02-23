@@ -39,8 +39,8 @@ const Footer = () => {
                 </Link>
               </li>
               <li className="text-lg">
-                <Link to="/services" className="hover:text-gray-400">
-                  Services
+                <Link to="/blog" className="hover:text-gray-400">
+                Blogs
                 </Link>
               </li>
               <li className="text-lg">
@@ -48,16 +48,8 @@ const Footer = () => {
                   Resources
                 </Link>
               </li>
-              <li className="text-lg">
-                <Link to="/contact" className="hover:text-gray-400">
-                  Contact
-                </Link>
-              </li>
-              <li className="text-lg">
-                <Link to="/about" className="hover:text-gray-400">
-                  About
-                </Link>
-              </li>
+             
+              
             </ul>
             <div className="mt-8 md:mt-0 md:flex md:items-center md:ml-8">
               <ul className="flex gap-x-4">

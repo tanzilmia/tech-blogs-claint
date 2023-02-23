@@ -1,19 +1,24 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { mycontext } from '../../../contextApi/AuthContext';
+import { AiFillClockCircle } from 'react-icons/ai';
 import '../Home.css'
 
 const Allpost = () => {
+  const {Loading} = useContext(mycontext)
     const [allPost, setallPost] = useState([])
     useEffect(() => {
-      axios.get(`http://localhost:5000/sidepost`)
+      axios.get(`https://blog-server-tau.vercel.app/sidepost`)
       .then(res =>{
         setallPost(res.data)
       })
       .catch((e)=> console.log(e))
     }, [])
 
-    console.log(allPost);
+    if(Loading){
+      return <p>Loadding...</p>
+    }
     
     return (
         <>
@@ -21,7 +26,7 @@ const Allpost = () => {
         {
           allPost.length &&
           allPost.map(post => <div key={post._id} className="side_post mb-2 content">
-          <p className='author_info my-2'> By {post.name} | {post.date} </p>
+          <p className='author_info my-2 flex items-center'> <span className='mr-1 text-[#ccd4d2]'><AiFillClockCircle/></span>  {post.date} </p>
           <div className=" flex">
           <div className="mr-2 img_sidediv">
               <img className='imge_sidepost md:w-[220px] lg:w-[220px] w-[100px] sm:w-[100px]' src={post.thumbnail} alt="" />

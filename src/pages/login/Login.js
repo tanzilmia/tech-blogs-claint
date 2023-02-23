@@ -27,7 +27,7 @@ const Login = () => {
       password,
     };
     axios
-      .post(`http://localhost:5000/authentication/login`, userinfo)
+      .post(`https://blog-server-tau.vercel.app/authentication/login`, userinfo)
       .then((res) => {
         if (res.data.message === "Login Successful") {
           const token = res.data.data;

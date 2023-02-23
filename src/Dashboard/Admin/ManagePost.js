@@ -13,7 +13,7 @@ const ManagePost = () => {
     const now = moment();
     const date = now.format("MM/DD/YY hh:mm a");
     useEffect(() => {
-      axios.get(`http://localhost:5000/admin/all-posts?email=${user?.email}`,header)
+      axios.get(`https://blog-server-tau.vercel.app/admin/all-posts?email=${user?.email}`,header)
       .then(res =>{
         setallPost(res.data); 
       })
@@ -25,11 +25,11 @@ const ManagePost = () => {
     const handledelete = (id) => {
       axios
         .delete(
-          `http://localhost:5000/admin/delete-post?email=${user?.email}&id=${id}`,
+          `https://blog-server-tau.vercel.app/admin/delete-post?email=${user?.email}&id=${id}`,
           header
         )
         .then((res) => {
-          console.log(res.data);
+          
           if (res.data.message === "success") {
             setallPost(res.data.posts);
             toast.success("delete Successfull")
@@ -39,7 +39,7 @@ const ManagePost = () => {
     };
 
    const makeFeaturepost = (id) =>{
-      axios.put(`http://localhost:5000/admin/make-featured?email=${user?.email}`,{id,date},header )
+      axios.put(`https://blog-server-tau.vercel.app/admin/make-featured?email=${user?.email}`,{id,date},header )
       .then(res =>{
         if (res.data.message === "success") {
           setallPost(res.data.posts);
@@ -49,7 +49,7 @@ const ManagePost = () => {
       .catch((e)=> console.log(e))
    }
    const makenormalPost = (id) =>{
-      axios.put(`http://localhost:5000/admin/make-normalpost?email=${user?.email}`,{id,date},header )
+      axios.put(`https://blog-server-tau.vercel.app/admin/make-normalpost?email=${user?.email}`,{id,date},header )
       .then(res =>{
         if (res.data.message === "success") {
           setallPost(res.data.posts);
@@ -59,10 +59,10 @@ const ManagePost = () => {
       .catch((e)=> console.log(e))
    }
 
-   console.log(allPost)
 
     return (
         <div>
+          <h2 className='md:hidden lg:hidden text-2xl text-center mb-2'> Manage Posts  </h2>
       {/* data table */}
       {
         allPost.length> 0 ?

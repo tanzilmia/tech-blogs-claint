@@ -24,7 +24,7 @@ const EditePost = () => {
   } = useForm();
 
   const EditeData = useLoaderData();
-  console.log(EditeData);
+ 
 
   const {
     title : oldTititle,
@@ -36,7 +36,7 @@ const EditePost = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/admin/categories`)
+      .get(`https://blog-server-tau.vercel.app/admin/categories`)
       .then((res) => {
         setCategories(res.data);
       })
@@ -84,13 +84,13 @@ const EditePost = () => {
 
     };
 
-    axios.put(`http://localhost:5000/author/edite-post?email=${user?.email}`, Updatepost, header)
+    axios.put(`https://blog-server-tau.vercel.app/author/edite-post?email=${user?.email}`, Updatepost, header)
     .then(res => {
       if(res.data.message === "Update Complete"){
         toast.success("Update Complete")
         if(user.role === "admin"){
             neviget("/dashboard/all-post")
-            console.log("working")
+          
         }
         else{
             neviget("/authorPannel/all-post")

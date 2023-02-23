@@ -12,7 +12,7 @@ const AllUser = () => {
     const [users, setusers] = useState([])
 
     useEffect(() => {
-      axios.get(`http://localhost:5000/admin/all-user?email=${user.email}`,header)
+      axios.get(`https://blog-server-tau.vercel.app/admin/all-user?email=${user.email}`,header)
       .then(res => {
         setusers(res.data)
       })
@@ -20,33 +20,33 @@ const AllUser = () => {
     }, [user?.email,header])
     
     const handleAuthor = (id) =>{
-        axios.put(`http://localhost:5000/admin/make-autor?email=${user?.email}`, {id}, header)
+        axios.put(`https://blog-server-tau.vercel.app/admin/make-autor?email=${user?.email}`, {id}, header)
         .then(res =>{
           setusers(res.data)
-          console.log(res.data);
+         
         })
         .catch((e)=>console.log(e))
     }
     const resetAuthor = (id) =>{
-        axios.put(`http://localhost:5000/admin/make-user?email=${user?.email}`, {id}, header)
+        axios.put(`https://blog-server-tau.vercel.app/admin/make-user?email=${user?.email}`, {id}, header)
         .then(res =>{
           setusers(res.data)
-          console.log(res.data)
+          
         })
         .catch((e)=>console.log(e))
     }
     const handledelete = (id) =>{
-      axios.delete(`http://localhost:5000/admin/delete-user?id=${id}&&email=${user.email}`, header)
+      axios.delete(`https://blog-server-tau.vercel.app/admin/delete-user?id=${id}&&email=${user.email}`, header)
       .then(res =>{
         setusers(res.data)
-        console.log(res.data)
+       
       })
       .catch((e)=>console.log(e))
     }
 
     return (
         <div>
-            <h2>All User {users?.length} </h2>
+            <h2 className='md:hidden lg:hidden text-2xl text-center mb-2'>All User  </h2>
             <Table className="w-full border-collapse bg-white shadow-md">
         <Thead>
           <Tr className="bg-gray-200 text-gray-700">

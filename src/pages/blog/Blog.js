@@ -4,12 +4,16 @@ import { Link } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 
 import "./Blog.css";
+import { useContext } from "react";
+import { mycontext } from "../../contextApi/AuthContext";
+import Loadding from "../../shearedcomp/Loadding/Loadding";
 const Blog = () => {
+  const {Loading} = useContext(mycontext)
   const [Posts, setPosts] = useState([]);
   const [currentPage, setcurrentPage] = useState(1);
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/posts?page=${currentPage}`)
+      .get(`https://blog-server-tau.vercel.app/posts?page=${currentPage}`)
       .then((res) => {
         setPosts(res.data.posts);
       })
@@ -26,7 +30,9 @@ const Blog = () => {
     setcurrentPage(1);
   };
 
-  console.log(Posts);
+if(Loading){
+  return <Loadding/>
+}
 
   return (
     <section className="w-11/12 mx-auto">
@@ -40,7 +46,7 @@ const Blog = () => {
         {/* post who will mapping */}
         {Posts.length &&
           Posts.map((post) => (
-            <Link to = {`/blogpost/${post._id}`} key ={post._id} className="container mb-3 content md:flex lg:flex">
+            <div  key ={post._id} className="container mb-3 content md:flex lg:flex">
               <div className="content_img md:w-4/12 lg:w-4/12 lg:mr-5 md:mr-5">
                 <img src={post.thumbnail} alt="" />
               </div>
@@ -55,14 +61,14 @@ const Blog = () => {
                     {post.date}
                   </div>
                 </div>
-                <h2 className="article_title sm:text-[20px] text-[20px] md:text-[30px] lg:text-[30px]">
+                <Link to = {`/blogpost/${post._id}`} className="article_title sm:text-[20px] text-[20px] md:text-[30px] lg:text-[30px]">
                   {post.title}
-                </h2>
+                </Link>
                 <p className="article_text mb-5">
                   {post?.article?.split(" ").slice(0, 35).join(" ")} ...
                 </p>
               </div>
-            </Link>
+            </div>
           ))}
       </div>
 

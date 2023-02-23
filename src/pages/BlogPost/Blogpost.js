@@ -5,22 +5,27 @@ import { BsFillBookmarkHeartFill } from "react-icons/bs";
 import NavTow from "../../shearedcomp/Navbar/NavTow";
 import "./Blogpost.css";
 import axios from "axios";
+import { useContext } from "react";
+import { mycontext } from "../../contextApi/AuthContext";
+import Loadding from "../../shearedcomp/Loadding/Loadding";
 
 const Blogpost = () => {
   const Post = useLoaderData();
-  console.log(Post);
+  const {Loading} = useContext(mycontext)
   const { name, title, article, date, category, thumbnail } = Post;
   const [RelatedPost, setRelatedPost] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/related-post?category=${category}`)
+      .get(`https://blog-server-tau.vercel.app/related-post?category=${category}`)
       .then((res) => {
         setRelatedPost(res.data);
       })
       .catch((e) => console.log(e.message));
   }, [category]);
 
-  console.log(RelatedPost);
+  if(Loading){
+    return <Loadding/>
+  }
   return (
     <>
       <NavTow />

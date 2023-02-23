@@ -31,9 +31,9 @@ const Register = () => {
       porfilepic,
       role
     }
-    console.log(userinfos)
 
-    axios.post(`http://localhost:5000/authentication`,userinfos)
+
+    axios.post(`https://blog-server-tau.vercel.app/authentication`,userinfos)
     .then(res =>{
       if(res.data.message === "Register SuccessFull"){
         neviget("/login")

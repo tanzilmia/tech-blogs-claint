@@ -1,16 +1,20 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { mycontext } from "../../contextApi/AuthContext";
+import Loadding from "../../shearedcomp/Loadding/Loadding";
 import Allpost from "./component/Allpost";
 import FeaturedPost from "./component/FeaturedPost";
 import "./Home.css";
 const Home = () => {
+  const {Loading} = useContext(mycontext)
   const [Posts, setPosts] = useState([]);
   const [Authors, setAuthors] = useState([]);
   // get Unique post 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/unique-posts`)
+      .get(`https://blog-server-tau.vercel.app/unique-posts`)
       .then((res) => {
         setPosts(res.data);
       })
@@ -20,29 +24,37 @@ const Home = () => {
   // get all authors
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/all-author`)
+      .get(`https://blog-server-tau.vercel.app/all-author`)
       .then((res) => {
         setAuthors(res.data);
       })
       .catch((e) => console.log(e.message));
   }, []);
 
-
+if(Loading){
+  return <Loadding/>
+}
 
   return (
     <section className="w-11/12 mx-auto">
       {/* featured and all posts */}
 
-      <div className="md:flex lg:flex my-5">
+      <div className="md:flex lg:flexmy-5">
+      <div className="side_allpost md:hidden lg:hidden">
+          <h2 className="text-2xl pb-4 font-semibold md:text-left lg:text-left text-center my-2 lg:my-0 md:my-0 sm:my-2">
+            Recent Posts
+          </h2>
+          <Allpost />
+        </div>
         <div className="md:w-7/12 lg:w-7/12 md:mr-5 lg:mr-5">
           <h2 className="text-2xl pb-4 font-semibold md:text-left lg:text-left text-center my-2 lg:my-0 md:my-0 sm:my-2">
             Featured Post
           </h2>
-          <div className="featured_post">
+          <div className="featured_post md:p-[15px] lg:p-[15px] p-[10px]">
             <FeaturedPost />
           </div>
         </div>
-        <div className="side_allpost md:w-5/12 lg:w-5/12">
+        <div className="side_allpost hidden md:inline-block lg:inline-block md:w-5/12 lg:w-5/12">
           <h2 className="text-2xl pb-4 font-semibold md:text-left lg:text-left text-center my-2 lg:my-0 md:my-0 sm:my-2">
             Recent Posts
           </h2>
@@ -83,7 +95,7 @@ const Home = () => {
       </div>
 
       <h2 className="text-3xl text-center py-10 font-bold text-gray-600">
-        Our Authors
+        Our Author
       </h2>
 
       {/* authors */}

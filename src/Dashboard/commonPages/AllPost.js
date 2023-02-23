@@ -9,14 +9,14 @@ import { RiDeleteBin5Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 const AllPost = () => {
-  const { user, header, setdynamicPath } = useContext(mycontext);
+  const { user, header } = useContext(mycontext);
   const [myposts, setMyposts] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/author/my-posts?email=${user?.email}`, header)
+      .get(`https://blog-server-tau.vercel.app/author/my-posts?email=${user?.email}`, header)
       .then((res) => {
-        console.log(res.data);
+       
         if (res.data.message === "success") {
           setMyposts(res.data.posts);
         }
@@ -24,18 +24,15 @@ const AllPost = () => {
       .catch((e) => console.log(e));
   }, [user?.email, header]);
 
-  const handleEdite = (id) => {
-    setdynamicPath(id);
-    console.log(id);
-  };
+  
   const handledelete = (id) => {
     axios
       .delete(
-        `http://localhost:5000/author/delete-post?email=${user?.email}&id=${id}`,
+        `https://blog-server-tau.vercel.app/author/delete-post?email=${user?.email}&id=${id}`,
         header
       )
       .then((res) => {
-        console.log(res.data);
+        
         if (res.data.message === "success") {
           setMyposts(res.data.posts);
           toast.success("delete Successfull")
@@ -46,7 +43,7 @@ const AllPost = () => {
 
   return (
     <div>
-      <h2>All Post {myposts.length} </h2>
+     <h2 className='md:hidden lg:hidden text-2xl text-center mb-2'>All Posts  </h2>
       {/* data table */}
       {myposts.length > 0 ? (
         <Table className="w-full border-collapse bg-white shadow-md">
@@ -82,7 +79,7 @@ const AllPost = () => {
                         ? `/dashboard/edete-post/${mypost._id}`
                         : `/authorPannel/edete-post/${mypost._id}`
                     }
-                    onClick={() => handleEdite(mypost._id)}
+                    
                   >
                     <BsFillPenFill />
                   </Link>{" "}

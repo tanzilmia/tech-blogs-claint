@@ -23,11 +23,11 @@ const MyProfile = () => {
                 formData.append('image', file);
                 axios.post(`https://api.imgbb.com/1/upload?key=${imgkey}`, formData)
                 .then(res => {
-                  console.log(res.data)
+                  
                   if(res.data.success){
                     
                     const profile = res?.data?.data?.url
-                    axios.put(`http://localhost:5000/authentication/upload-profile?id=${user?._id}`, { profile })
+                    axios.put(`https://blog-server-tau.vercel.app/authentication/upload-profile?id=${user?._id}`, { profile })
                       .then(res =>{
                         if(res?.data?.message === "update complete"){
                           setuser(res?.data?.data)

@@ -30,7 +30,7 @@ const CreatePost = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/admin/categories`)
+      .get(`https://blog-server-tau.vercel.app/admin/categories`)
       .then((res) => {
         setCategories(res.data);
       })
@@ -80,10 +80,9 @@ const CreatePost = () => {
       authorPic:porfilepic
     };
 
-    console.log(newPost)
-    axios.post(`http://localhost:5000/author/create-post?email=${user?.email}`, newPost, header)
+    axios.post(`https://blog-server-tau.vercel.app/author/create-post?email=${user?.email}`, newPost, header)
     .then(res => {
-      console.log(res.data);
+      
 
       if(res.data.message === "Post created successfully"){
         toast.success("Post Added")
@@ -101,7 +100,7 @@ const CreatePost = () => {
 
   return (
     <div>
-      <h2>Create Post</h2>
+      <h2 className='md:hidden lg:hidden text-2xl text-center mb-2'> Create Post </h2>
 
       <div>
         <div>

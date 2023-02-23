@@ -10,13 +10,13 @@ import EditePost from "../Dashboard/commonPages/EditePost";
 import DashboardLayout from "../Dashboard/DashboardLayout";
 import MyProfile from "../Dashboard/MyProfile";
 import MainLayout from "../layout/MainLayout";
-import Aboutus from "../pages/Aboutus/Aboutus";
 import AdminRoutes from "../pages/AdminRoutes/AdminRoutes";
 import Author from "../pages/Author/Author";
 import Blog from "../pages/blog/Blog";
 import Blogpost from "../pages/BlogPost/Blogpost";
 import Category from "../pages/category/Category";
 import ContactUs from "../pages/contact/ContactUs";
+import Error from "../pages/ErrorPage/Error";
 import Home from "../pages/home/Home";
 import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
@@ -27,6 +27,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement : <Error/>,
     children: [
       {
         path: "/",
@@ -43,25 +44,13 @@ const router = createBrowserRouter([
       {
         path: "/blogpost/:id",
         element: <Blogpost />,
-        loader: ({params}) => fetch(`http://localhost:5000/single-post/${params.id}`)
+        loader: ({params}) => fetch(`https://blog-server-tau.vercel.app/single-post/${params.id}`)
       },
-      {
-        path: "/aboutus",
-        element: <Aboutus />,
-      },
+      
       {
         path: "/category-posts/:id",
         element: <Category />,
-        loader: ({params}) => fetch(`http://localhost:5000/category-posts-data/${params.id}`)
-      },
-      {
-        path: "/author",
-        element: (
-          <PrivetRouting>
-            {" "}
-            <Author />{" "}
-          </PrivetRouting>
-        ),
+        loader: ({params}) => fetch(`https://blog-server-tau.vercel.app/category-posts-data/${params.id}`)
       },
       {
         path: "/contact",
@@ -100,7 +89,7 @@ const router = createBrowserRouter([
           {
             path: "/dashboard/edete-post/:id",
             element: <AdminRoutes> <EditePost/> </AdminRoutes>,
-            loader: ({params})=> fetch(`http://localhost:5000/author/edite-post/${params.id}`)
+            loader: ({params})=> fetch(`https://blog-server-tau.vercel.app/author/edite-post/${params.id}`)
           },
           {
             path: "/dashboard/profile",
@@ -164,7 +153,7 @@ const router = createBrowserRouter([
                 <AuthorPost/>{" "}
               </AdminRoutes>
             ),
-            loader : ({params})=> fetch(`http://localhost:5000/admin/user-posts/${params.id}`)
+            loader : ({params})=> fetch(`https://blog-server-tau.vercel.app/admin/user-posts/${params.id}`)
           },
         ],
       },
@@ -191,7 +180,7 @@ const router = createBrowserRouter([
           {
             path: "/authorPannel/edete-post/:id",
             element: <AuthorRouting> <EditePost/> </AuthorRouting>,
-            loader: ({params})=> fetch(`http://localhost:5000/author/edite-post/${params.id}`)
+            loader: ({params})=> fetch(`https://blog-server-tau.vercel.app/author/edite-post/${params.id}`)
           },
           {
             path: "/authorPannel/profile",

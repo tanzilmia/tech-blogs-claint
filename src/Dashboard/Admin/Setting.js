@@ -9,7 +9,7 @@ const Setting = () => {
     const addCategory = (e) =>{
         e.preventDefault()
         const category =  e.target.category.value
-        axios.post(`http://localhost:5000/admin/add-category?email=${user?.email}`,{category},header)
+        axios.post(`https://blog-server-tau.vercel.app/admin/add-category?email=${user?.email}`,{category},header)
         .then(res=> {
             if(res.data.message === "Category created successfully"){
                  e.target.category.value = " ";
@@ -27,7 +27,7 @@ const Setting = () => {
 
     return (
         <div>
-            <h2> Settings Page</h2>
+            <h2 className='md:hidden lg:hidden text-2xl text-center mb-2'>Setting  </h2>
 
            <form onSubmit={addCategory}>
             <input type="text" name = "category" placeholder='add Category' />

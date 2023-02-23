@@ -9,9 +9,6 @@ const AuthContext = ({children }) => {
     const [searchtext, setsearchText] = useState("")
 
     const token = localStorage.getItem("accessToken")
-    console.log(token)
-
-
     const header = {
       headers: {
            'Content-Type': 'application/json',
@@ -22,7 +19,7 @@ const AuthContext = ({children }) => {
 
     useEffect(() => {
       if(token || islogin){
-        axios.post(`http://localhost:5000/authentication/user-info`,{token})
+        axios.post(`https://blog-server-tau.vercel.app/authentication/user-info`,{token})
         .then(res => {
             
             if(res.data.data){
