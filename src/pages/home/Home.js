@@ -83,7 +83,7 @@ const Home = () => {
       </div>
 
       <h2 className="text-3xl text-center py-10 font-bold text-gray-600">
-        Our Author
+        Our Authors
       </h2>
 
       {/* authors */}

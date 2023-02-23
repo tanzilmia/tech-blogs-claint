@@ -10,7 +10,7 @@ const Footer = () => {
     const location = useLocation();
   
     const updateHidden = () => {
-      if (location.pathname === "/login" || location.pathname === "/register") {
+      if (location.pathname === "/login" || location.pathname === "/register" || location.pathname === "/blog/search-result") {
         setHidden(true);
       } else {
         setHidden(false);

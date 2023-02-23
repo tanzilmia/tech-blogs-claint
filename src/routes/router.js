@@ -20,6 +20,7 @@ import ContactUs from "../pages/contact/ContactUs";
 import Home from "../pages/home/Home";
 import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
+import SearchPost from "../pages/searchitems/SearchPost";
 import AuthorRouting from "./AuthorRouting";
 import PrivetRouting from "./PrivetRouting";
 const router = createBrowserRouter([
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/blog",
         element: <Blog />,
+      },
+      {
+        path: "/blog/search-result",
+        element: <SearchPost/>,
       },
       {
         path: "/blogpost/:id",
