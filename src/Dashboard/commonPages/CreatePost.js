@@ -80,6 +80,8 @@ const CreatePost = () => {
       authorPic:porfilepic
     };
 
+    console.log(newPost)
+
     axios.post(`https://blog-server-tau.vercel.app/author/create-post?email=${user?.email}`, newPost, header)
     .then(res => {
       
