@@ -1,7 +1,7 @@
 # Tanzil Blogs
 - Link : https://tech-blogs-claint.vercel.app/
 
-### Usases Technology (fron-end)
+### Usases Technology (Making UI)
 
 - React, Tailwind css, Row Css 
 #### Packegs :
