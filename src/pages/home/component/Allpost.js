@@ -32,7 +32,7 @@ const Allpost = () => {
               <img className='imge_sidepost md:w-[220px] lg:w-[220px] w-[100px] sm:w-[100px]' src={post.thumbnail} alt="" />
               </div> 
         
-          <Link to = {`/blogpost/${post._id}`} className='side_title sm:text-[14px] text-[14px] lg:text-[18px] md:text-[18px]'> {post.title}</Link>
+          <Link to = {`/blogpost/${post._id}`} className='side_title sm:text-[14px] font-semibold text-[14px] lg:text-[18px] md:text-[18px]'> {post.title}</Link>
           </div>
       </div>) 
         }

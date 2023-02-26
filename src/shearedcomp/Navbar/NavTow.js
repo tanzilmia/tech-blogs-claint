@@ -68,14 +68,14 @@ const NavTow = () => {
               <input
                 type="text"
                 name="search"
-                placeholder="Search"
+                placeholder="search by title"
                 className="py-1 px-3 rounded-md text-gray-900 bg-gray-300 focus:outline-none focus:bg-white focus:text-gray-900"
               />
               <button
                 type="submit"
                 className="py-1 px-4 rounded-md bg-blue-600 text-white hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
               >
-                Search by title
+                search
               </button>
             </form>
           </li>
@@ -168,11 +168,11 @@ const NavTow = () => {
                 <input
                   type="text"
                   name="search"
-                  placeholder="Search"
+                  placeholder="search by title"
                   className="py-1 px-3 rounded-md text-gray-900 bg-gray-300 focus:outline-none focus:bg-white focus:text-gray-900"
                 />
                 <button type="submit" className="py-1 px-4 rounded-md bg-blue-600 text-white hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
-                Search by title
+                search 
                 </button>
               </form>
             </li>
