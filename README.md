@@ -1,5 +1,5 @@
 # Tanzil Blogs
-## A Bloging Website 
+- Link : https://tech-blogs-claint.vercel.app/
 
 ### Usases Technology (fron-end)
 
@@ -20,6 +20,8 @@
 - Make any post Featured (Only Admin)
 - Make Any user role to Author and nomal user (Only Admin)
 - Admin can see Authur's Post Histry
+-Author Profile
+-Admin Profile
 
 
 ## Server Side Features
