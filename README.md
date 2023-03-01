@@ -24,6 +24,11 @@
 -Admin Profile
 
 
+## Admin Access :
+- Email :  admin@gmail.com
+- Password : 111111
+
+
 ## Server Side Features
 
 - [node.js] - evented I/O for the backend
