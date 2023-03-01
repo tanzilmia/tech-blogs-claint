@@ -1,6 +1,17 @@
 # Tanzil Blogs
 - Link : https://tech-blogs-claint.vercel.app/
 
+## Admin Access :
+- Email :  admin@gmail.com
+- Password : 111111
+
+## Author Access :
+- Email : devid@gmail.com
+- Password : 111111
+
+## About Tanizl's Blog
+It's a bloging website , where a author or admin can post Blog,  and Admin Can Make any user To Author .  Admin Can Controll Authors Posts. Post are Edetable by author When A Visitor Read any Post He can See Related Post On this Post Of Bottom.  
+
 ### Usases Technology (Making UI)
 
 - React, Tailwind css, Row Css 
@@ -22,11 +33,6 @@
 - Admin can see Authur's Post Histry
 -Author Profile
 -Admin Profile
-
-
-## Admin Access :
-- Email :  admin@gmail.com
-- Password : 111111
 
 
 ## Server Side Features
