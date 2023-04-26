@@ -4,10 +4,12 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useContext } from "react";
 import { mycontext } from "../../contextApi/AuthContext";
+import Loadding from "../../shearedcomp/Loadding/Loadding";
 
 const Register = () => {
   const neviget = useNavigate()
   const {setLoading} = useContext(mycontext)
+  const [loadings, setloadings] = useState(false)
   const {
     register,
     handleSubmit,
@@ -16,6 +18,7 @@ const Register = () => {
   const [registerError, setregisterError] = useState("");
 
   const handleRegister = (data) => {
+    setloadings(true)
     setLoading(true)
     const name = data.name;
     const email = data.email;
@@ -36,16 +39,17 @@ const Register = () => {
     axios.post(`https://blog-server-tau.vercel.app/authentication`,userinfos)
     .then(res =>{
       if(res.data.message === "Register SuccessFull"){
+        setloadings(false)
         neviget("/login")
+        
       }
     })
     .catch(error => console.log(error))
-
-
-
-    
-
   };
+
+  if(loadings){
+    return <Loadding/>
+  }
 
   return (
     <div className="w-full h-[100vh] login_page flex items-center justify-center text-white">

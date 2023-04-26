@@ -36,6 +36,7 @@ const AllUser = () => {
         .catch((e)=>console.log(e))
     }
     const handledelete = (id) =>{
+      
       axios.delete(`https://blog-server-tau.vercel.app/admin/delete-user?id=${id}&&email=${user.email}`, header)
       .then(res =>{
         setusers(res.data)

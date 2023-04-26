@@ -4,9 +4,11 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { mycontext } from "../../contextApi/AuthContext";
+import Loadding from "../../shearedcomp/Loadding/Loadding";
 import "./Login.css";
 const Login = () => {
   const { setisLogedind, setLoading } = useContext(mycontext);
+  const [loadings, setloadings] = useState(false)
   const {
     register,
     handleSubmit,
@@ -18,6 +20,7 @@ const Login = () => {
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
   const handlLogin = (data) => {
+    setloadings(true)
     setLoading(true);
     const email = data.email;
     const password = data.password;
@@ -32,12 +35,19 @@ const Login = () => {
         if (res.data.message === "Login Successful") {
           const token = res.data.data;
           localStorage.setItem("accessToken", token);
-          neviget(from, { replace: true });
           setisLogedind(true);
+          neviget(from, { replace: true });
+          
+          setloadings(false)
+          
         }
       })
       .catch((error) => console.log(error));
   };
+
+  if(loadings){
+    return <Loadding/>
+  }
 
   return (
     <div className="w-full h-[100vh] login_page flex items-center justify-center text-white">
