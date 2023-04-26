@@ -10,7 +10,7 @@
 - Password : 111111
 
 ## About Tanizl's Blog
-It's a bloging website , where a author or admin can post Blog,  and Admin Can Make any user To Author .  Admin Can Controll Authors Posts. Post are Edetable by author When A Visitor Read any Post He can See Related Post On this Post Of Bottom.  
+It's a bloging website , where a author or admin can post Blog,  and Admin Can Make any user To Author .  Admin Can Controll Authors Posts. and Admin can make any post featured ,  Post are Edetable by author  . When A Visitor Read any Post He can See Related Post On this Post Of Bottom.  
 
 ### Usases Technology (Making UI)
 
