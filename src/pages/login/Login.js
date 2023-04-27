@@ -8,6 +8,7 @@ import Loadding from "../../shearedcomp/Loadding/Loadding";
 import "./Login.css";
 const Login = () => {
   const { setisLogedind, setLoading } = useContext(mycontext);
+  const [error, seterror] = useState("")
   const [loadings, setloadings] = useState(false)
   const {
     register,
@@ -32,6 +33,7 @@ const Login = () => {
     axios
       .post(`https://blog-server-tau.vercel.app/authentication/login`, userinfo)
       .then((res) => {
+        console.log(res.data);
         if (res.data.message === "Login Successful") {
           const token = res.data.data;
           localStorage.setItem("accessToken", token);
@@ -40,6 +42,10 @@ const Login = () => {
           
           setloadings(false)
           
+        }
+        if(res.data.message ==="password not Match"){
+          setloadings(false)
+          seterror("passowrd Not Match")
         }
       })
       .catch((error) => console.log(error));
@@ -91,6 +97,7 @@ const Login = () => {
               className="input input-bordered w-full py-2 px-4 my-2 rounded-lg"
             />
             <label className="label"> </label>
+            {error}
             {errors.password && (
               <p className="text-red-600">{errors.password?.message}</p>
             )}
