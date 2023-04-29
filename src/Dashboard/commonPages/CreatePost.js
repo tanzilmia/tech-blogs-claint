@@ -30,7 +30,7 @@ const CreatePost = () => {
 
   useEffect(() => {
     axios
-      .get(`https://blog-server-tau.vercel.app/admin/categories`)
+      .get(`https://tech-blog-server-jade.vercel.app/admin/categories`)
       .then((res) => {
         setCategories(res.data);
       })
@@ -82,7 +82,7 @@ const CreatePost = () => {
 
     console.log(newPost)
 
-    axios.post(`https://blog-server-tau.vercel.app/author/create-post?email=${user?.email}`, newPost, header)
+    axios.post(`https://tech-blog-server-jade.vercel.app/author/create-post?email=${user?.email}`, newPost, header)
     .then(res => {
       
 

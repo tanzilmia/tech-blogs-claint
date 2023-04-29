@@ -27,7 +27,7 @@ const MyProfile = () => {
                   if(res.data.success){
                     
                     const profile = res?.data?.data?.url
-                    axios.put(`https://blog-server-tau.vercel.app/authentication/upload-profile?id=${user?._id}`, { profile })
+                    axios.put(`https://tech-blog-server-jade.vercel.app/authentication/upload-profile?id=${user?._id}`, { profile })
                       .then(res =>{
                         if(res?.data?.message === "update complete"){
                           setuser(res?.data?.data)

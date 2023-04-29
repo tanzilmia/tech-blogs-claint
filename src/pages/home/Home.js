@@ -14,7 +14,7 @@ const Home = () => {
   // get Unique post 
   useEffect(() => {
     axios
-      .get(`https://blog-server-tau.vercel.app/unique-posts`)
+      .get(`https://tech-blog-server-jade.vercel.app/unique-posts`)
       .then((res) => {
         setPosts(res.data);
       })
@@ -24,7 +24,7 @@ const Home = () => {
   // get all authors
   useEffect(() => {
     axios
-      .get(`https://blog-server-tau.vercel.app/all-author`)
+      .get(`https://tech-blog-server-jade.vercel.app/all-author`)
       .then((res) => {
         setAuthors(res.data);
       })

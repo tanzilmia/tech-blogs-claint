@@ -19,7 +19,7 @@ const AuthContext = ({children }) => {
 
     useEffect(() => {
       if(token || islogin){
-        axios.post(`https://blog-server-tau.vercel.app/authentication/user-info`,{token})
+        axios.post(`https://tech-blog-server-jade.vercel.app/authentication/user-info`,{token})
         .then(res => {
             
             if(res.data.data){

@@ -6,7 +6,7 @@ import '../Home.css'
 const FeaturedPost = () => {
 const [featuresPost, setfeaturesPost] = useState({})
     useEffect(() => {
-     axios.get(`https://blog-server-tau.vercel.app/featured-posts`)
+     axios.get(`https://tech-blog-server-jade.vercel.app/featured-posts`)
      .then(res =>{
         setfeaturesPost(res.data)
      })

@@ -9,7 +9,7 @@ const Setting = () => {
     const addCategory = (e) =>{
         e.preventDefault()
         const category =  e.target.category.value
-        axios.post(`https://blog-server-tau.vercel.app/admin/add-category?email=${user?.email}`,{category},header)
+        axios.post(`https://tech-blog-server-jade.vercel.app/admin/add-category?email=${user?.email}`,{category},header)
         .then(res=> {
             if(res.data.message === "Category created successfully"){
                  e.target.category.value = " ";

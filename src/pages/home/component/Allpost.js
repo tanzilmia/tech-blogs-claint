@@ -9,7 +9,7 @@ const Allpost = () => {
   const {Loading} = useContext(mycontext)
     const [allPost, setallPost] = useState([])
     useEffect(() => {
-      axios.get(`https://blog-server-tau.vercel.app/sidepost`)
+      axios.get(`https://tech-blog-server-jade.vercel.app/sidepost`)
       .then(res =>{
         setallPost(res.data)
       })

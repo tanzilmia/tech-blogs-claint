@@ -31,7 +31,7 @@ const Login = () => {
       password,
     };
     axios
-      .post(`https://blog-server-tau.vercel.app/authentication/login`, userinfo)
+      .post(`https://tech-blog-server-jade.vercel.app/authentication/login`, userinfo)
       .then((res) => {
         console.log(res.data);
         if (res.data.message === "Login Successful") {
@@ -47,6 +47,12 @@ const Login = () => {
           setloadings(false)
           seterror("passowrd Not Match")
         }
+        if(res.data.message === "custome error"){
+          setloadings(false)
+          setLoginError("Enter Valid Info")
+          
+        }
+       
       })
       .catch((error) => console.log(error));
   };

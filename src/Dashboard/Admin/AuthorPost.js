@@ -19,7 +19,7 @@ const AuthorPost = () => {
     const handledelete = (id) => {
         axios
           .delete(
-            `https://blog-server-tau.vercel.app/admin/delete-post?email=${user?.email}&id=${id}`,
+            `https://tech-blog-server-jade.vercel.app/admin/delete-post?email=${user?.email}&id=${id}`,
             header
           )
           .then((res) => {
@@ -34,7 +34,7 @@ const AuthorPost = () => {
       };
   
      const makeFeaturepost = (id) =>{
-        axios.put(`https://blog-server-tau.vercel.app/admin/make-featured?email=${user?.email}`,{id,date},header )
+        axios.put(`https://tech-blog-server-jade.vercel.app/admin/make-featured?email=${user?.email}`,{id,date},header )
         .then(res =>{
           if (res.data.message === "success") {
             window.location.reload()
@@ -44,7 +44,7 @@ const AuthorPost = () => {
         .catch((e)=> console.log(e))
      }
      const makenormalPost = (id) =>{
-        axios.put(`https://blog-server-tau.vercel.app/admin/make-normalpost?email=${user?.email}`,{id,date},header )
+        axios.put(`https://tech-blog-server-jade.vercel.app/admin/make-normalpost?email=${user?.email}`,{id,date},header )
         .then(res =>{
           if (res.data.message === "success") {
             window.location.reload()

@@ -44,13 +44,13 @@ const router = createBrowserRouter([
       {
         path: "/blogpost/:id",
         element: <Blogpost />,
-        loader: ({params}) => fetch(`https://blog-server-tau.vercel.app/single-post/${params.id}`)
+        loader: ({params}) => fetch(`https://tech-blog-server-jade.vercel.app/single-post/${params.id}`)
       },
       
       {
         path: "/category-posts/:id",
         element: <Category />,
-        loader: ({params}) => fetch(`https://blog-server-tau.vercel.app/category-posts-data/${params.id}`)
+        loader: ({params}) => fetch(`https://tech-blog-server-jade.vercel.app/category-posts-data/${params.id}`)
       },
       {
         path: "/contact",
@@ -89,7 +89,7 @@ const router = createBrowserRouter([
           {
             path: "/dashboard/edete-post/:id",
             element: <AdminRoutes> <EditePost/> </AdminRoutes>,
-            loader: ({params})=> fetch(`https://blog-server-tau.vercel.app/author/edite-post/${params.id}`)
+            loader: ({params})=> fetch(`https://tech-blog-server-jade.vercel.app/author/edite-post/${params.id}`)
           },
           {
             path: "/dashboard/profile",
@@ -153,7 +153,7 @@ const router = createBrowserRouter([
                 <AuthorPost/>{" "}
               </AdminRoutes>
             ),
-            loader : ({params})=> fetch(`https://blog-server-tau.vercel.app/admin/user-posts/${params.id}`)
+            loader : ({params})=> fetch(`https://tech-blog-server-jade.vercel.app/admin/user-posts/${params.id}`)
           },
         ],
       },
@@ -180,7 +180,7 @@ const router = createBrowserRouter([
           {
             path: "/authorPannel/edete-post/:id",
             element: <AuthorRouting> <EditePost/> </AuthorRouting>,
-            loader: ({params})=> fetch(`https://blog-server-tau.vercel.app/author/edite-post/${params.id}`)
+            loader: ({params})=> fetch(`https://tech-blog-server-jade.vercel.app/author/edite-post/${params.id}`)
           },
           {
             path: "/authorPannel/profile",

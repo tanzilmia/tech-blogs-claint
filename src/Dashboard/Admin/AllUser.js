@@ -12,7 +12,7 @@ const AllUser = () => {
     const [users, setusers] = useState([])
 
     useEffect(() => {
-      axios.get(`https://blog-server-tau.vercel.app/admin/all-user?email=${user.email}`,header)
+      axios.get(`https://tech-blog-server-jade.vercel.app/admin/all-user?email=${user.email}`,header)
       .then(res => {
         setusers(res.data)
       })
@@ -20,7 +20,7 @@ const AllUser = () => {
     }, [user?.email,header])
     
     const handleAuthor = (id) =>{
-        axios.put(`https://blog-server-tau.vercel.app/admin/make-autor?email=${user?.email}`, {id}, header)
+        axios.put(`https://tech-blog-server-jade.vercel.app/admin/make-autor?email=${user?.email}`, {id}, header)
         .then(res =>{
           setusers(res.data)
          
@@ -28,7 +28,7 @@ const AllUser = () => {
         .catch((e)=>console.log(e))
     }
     const resetAuthor = (id) =>{
-        axios.put(`https://blog-server-tau.vercel.app/admin/make-user?email=${user?.email}`, {id}, header)
+        axios.put(`https://tech-blog-server-jade.vercel.app/admin/make-user?email=${user?.email}`, {id}, header)
         .then(res =>{
           setusers(res.data)
           
@@ -37,7 +37,7 @@ const AllUser = () => {
     }
     const handledelete = (id) =>{
       
-      axios.delete(`https://blog-server-tau.vercel.app/admin/delete-user?id=${id}&&email=${user.email}`, header)
+      axios.delete(`https://tech-blog-server-jade.vercel.app/admin/delete-user?id=${id}&&email=${user.email}`, header)
       .then(res =>{
         setusers(res.data)
        

@@ -61,7 +61,7 @@ const Navbar = () => {
 
   useEffect(() => {
     axios
-      .get(`https://blog-server-tau.vercel.app/admin/categories`)
+      .get(`https://tech-blog-server-jade.vercel.app/admin/categories`)
       .then((res) => {
         setcategorys(res.data);
       })

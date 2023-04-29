@@ -13,7 +13,7 @@ const Blog = () => {
   const [currentPage, setcurrentPage] = useState(1);
   useEffect(() => {
     axios
-      .get(`https://blog-server-tau.vercel.app/posts?page=${currentPage}`)
+      .get(`https://tech-blog-server-jade.vercel.app/posts?page=${currentPage}`)
       .then((res) => {
         setPosts(res.data.posts);
       })

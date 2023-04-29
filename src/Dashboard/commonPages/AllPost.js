@@ -14,7 +14,7 @@ const AllPost = () => {
 
   useEffect(() => {
     axios
-      .get(`https://blog-server-tau.vercel.app/author/my-posts?email=${user?.email}`, header)
+      .get(`https://tech-blog-server-jade.vercel.app/author/my-posts?email=${user?.email}`, header)
       .then((res) => {
        
         if (res.data.message === "success") {
@@ -28,7 +28,7 @@ const AllPost = () => {
   const handledelete = (id) => {
     axios
       .delete(
-        `https://blog-server-tau.vercel.app/author/delete-post?email=${user?.email}&id=${id}`,
+        `https://tech-blog-server-jade.vercel.app/author/delete-post?email=${user?.email}&id=${id}`,
         header
       )
       .then((res) => {

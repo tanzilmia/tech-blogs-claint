@@ -7,9 +7,9 @@ import { mycontext } from "../../contextApi/AuthContext";
 import Loadding from "../../shearedcomp/Loadding/Loadding";
 
 const Register = () => {
-  const neviget = useNavigate()
-  const {setLoading} = useContext(mycontext)
-  const [loadings, setloadings] = useState(false)
+  const neviget = useNavigate();
+  const { setLoading } = useContext(mycontext);
+  const [loadings, setloadings] = useState(false);
   const {
     register,
     handleSubmit,
@@ -18,37 +18,43 @@ const Register = () => {
   const [registerError, setregisterError] = useState("");
 
   const handleRegister = (data) => {
-    setloadings(true)
-    setLoading(true)
+    setloadings(true);
+    setLoading(true);
     const name = data.name;
     const email = data.email;
     const password = data.password;
     const porfilepic = "null";
     const role = "null";
 
-    
     const userinfos = {
       name,
       email,
       password,
       porfilepic,
-      role
-    }
+      role,
+    };
 
-
-    axios.post(`https://blog-server-tau.vercel.app/authentication`,userinfos)
-    .then(res =>{
-      if(res.data.message === "Register SuccessFull"){
-        setloadings(false)
-        neviget("/login")
-        
-      }
-    })
-    .catch(error => console.log(error))
+    axios
+      .post(`https://tech-blog-server-jade.vercel.app/authentication`, userinfos)
+      .then((res) => {
+        if (res.data.message === "Register SuccessFull") {
+          setloadings(false);
+          neviget("/login");
+        }
+        if (res.data.message === "custome error") {
+          setloadings(false);
+          setregisterError("Enter Vaild Info");
+        }
+        if (res.data.message === "User Is Alreay Exist") {
+          setloadings(false);
+          setregisterError("User Is Alreday Exist");
+        }
+      })
+      .catch((error) => console.log(error));
   };
 
-  if(loadings){
-    return <Loadding/>
+  if (loadings) {
+    return <Loadding />;
   }
 
   return (
@@ -123,7 +129,12 @@ const Register = () => {
             {registerError && <p className="text-red-600">{registerError}</p>}
           </div>
         </form>
-        <p className="my-1">Already Have an account ? <Link to = '/login' className="font-bold text-blue-400">Login Now</Link> </p>
+        <p className="my-1">
+          Already Have an account ?{" "}
+          <Link to="/login" className="font-bold text-blue-400">
+            Login Now
+          </Link>{" "}
+        </p>
       </div>
     </div>
   );

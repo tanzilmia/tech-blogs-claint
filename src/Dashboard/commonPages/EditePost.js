@@ -36,7 +36,7 @@ const EditePost = () => {
 
   useEffect(() => {
     axios
-      .get(`https://blog-server-tau.vercel.app/admin/categories`)
+      .get(`https://tech-blog-server-jade.vercel.app/admin/categories`)
       .then((res) => {
         setCategories(res.data);
       })
@@ -84,7 +84,7 @@ const EditePost = () => {
 
     };
 
-    axios.put(`https://blog-server-tau.vercel.app/author/edite-post?email=${user?.email}`, Updatepost, header)
+    axios.put(`https://tech-blog-server-jade.vercel.app/author/edite-post?email=${user?.email}`, Updatepost, header)
     .then(res => {
       if(res.data.message === "Update Complete"){
         toast.success("Update Complete")

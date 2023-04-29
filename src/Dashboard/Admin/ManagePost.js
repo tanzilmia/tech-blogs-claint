@@ -13,7 +13,7 @@ const ManagePost = () => {
     const now = moment();
     const date = now.format("MM/DD/YY hh:mm a");
     useEffect(() => {
-      axios.get(`https://blog-server-tau.vercel.app/admin/all-posts?email=${user?.email}`,header)
+      axios.get(`https://tech-blog-server-jade.vercel.app/admin/all-posts?email=${user?.email}`,header)
       .then(res =>{
         setallPost(res.data); 
       })
@@ -25,7 +25,7 @@ const ManagePost = () => {
     const handledelete = (id) => {
       axios
         .delete(
-          `https://blog-server-tau.vercel.app/admin/delete-post?email=${user?.email}&id=${id}`,
+          `https://tech-blog-server-jade.vercel.app/admin/delete-post?email=${user?.email}&id=${id}`,
           header
         )
         .then((res) => {
@@ -39,7 +39,7 @@ const ManagePost = () => {
     };
 
    const makeFeaturepost = (id) =>{
-      axios.put(`https://blog-server-tau.vercel.app/admin/make-featured?email=${user?.email}`,{id,date},header )
+      axios.put(`https://tech-blog-server-jade.vercel.app/admin/make-featured?email=${user?.email}`,{id,date},header )
       .then(res =>{
         if (res.data.message === "success") {
           setallPost(res.data.posts);
@@ -49,7 +49,7 @@ const ManagePost = () => {
       .catch((e)=> console.log(e))
    }
    const makenormalPost = (id) =>{
-      axios.put(`https://blog-server-tau.vercel.app/admin/make-normalpost?email=${user?.email}`,{id,date},header )
+      axios.put(`https://tech-blog-server-jade.vercel.app/admin/make-normalpost?email=${user?.email}`,{id,date},header )
       .then(res =>{
         if (res.data.message === "success") {
           setallPost(res.data.posts);

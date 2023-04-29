@@ -9,7 +9,7 @@ const SearchPost = () => {
     const [Posts, setPosts] = useState([])
     const {searchtext} = useContext(mycontext)
     useEffect(() => {
-        axios.get(`https://blog-server-tau.vercel.app/search-items?searchtext=${searchtext}`)
+        axios.get(`https://tech-blog-server-jade.vercel.app/search-items?searchtext=${searchtext}`)
         .then(res =>{
             setPosts(res.data);
         })

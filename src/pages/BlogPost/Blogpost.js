@@ -16,7 +16,7 @@ const Blogpost = () => {
   const [RelatedPost, setRelatedPost] = useState([]);
   useEffect(() => {
     axios
-      .get(`https://blog-server-tau.vercel.app/related-post?category=${category}`)
+      .get(`https://tech-blog-server-jade.vercel.app/related-post?category=${category}`)
       .then((res) => {
         setRelatedPost(res.data);
       })
